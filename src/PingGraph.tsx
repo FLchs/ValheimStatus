@@ -1,91 +1,90 @@
-import { Line } from 'react-chartjs-2'
+import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
   PointElement,
   LineElement,
-  type ScriptableLineSegmentContext,
-} from 'chart.js'
-import type { LatencyDataPoint } from './usePingLatency'
+} from "chart.js";
+import type { LatencyDataPoint } from "./usePingLatency";
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement)
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement);
 
 interface PingGraphProps {
-  latencyData: LatencyDataPoint[]
+  latencyData: LatencyDataPoint[];
 }
 
 const getLatencyColor = (latency: number | null): string => {
-  if (latency === null) return '#78716c'
-  if (latency < 100) return '#4ade80'
-  if (latency <= 300) return '#facc15'
-  return '#f87171'
-}
+  if (latency === null) return "#78716c";
+  if (latency < 100) return "#4ade80";
+  if (latency <= 300) return "#facc15";
+  return "#f87171";
+};
 
 const getCurrentLatencyColor = (latency: number | null): string => {
-  if (latency === null) return 'text-stone-500'
-  if (latency < 100) return 'text-green-400'
-  if (latency <= 300) return 'text-yellow-400'
-  return 'text-red-400'
-}
+  if (latency === null) return "text-stone-500";
+  if (latency < 100) return "text-green-400";
+  if (latency <= 300) return "text-yellow-400";
+  return "text-red-400";
+};
+
+const options = {
+  responsive: true,
+  maintainAspectRatio: false,
+  animation: { duration: 0 },
+  interaction: {
+    mode: "nearest" as const,
+    intersect: false,
+  },
+  plugins: {
+    legend: { display: false },
+    tooltip: { enabled: false },
+  },
+  scales: {
+    x: {
+      grid: { color: "rgba(120, 113, 108, 0.2)" },
+      ticks: { color: "rgba(231, 229, 228, 0.6)", font: { size: 10 }, maxTicksLimit: 6 },
+    },
+    y: {
+      beginAtZero: true,
+      suggestedMax: 150,
+      grid: { color: "rgba(120, 113, 108, 0.2)" },
+      ticks: { color: "rgba(231, 229, 228, 0.6)", font: { size: 10 } },
+    },
+  },
+};
 
 export const PingGraph = ({ latencyData }: PingGraphProps) => {
-  const currentLatency = latencyData.length > 0 ? latencyData[latencyData.length - 1].latency : null
+  const currentLatency =
+    latencyData.length > 0 ? latencyData[latencyData.length - 1].latency : null;
+
+  const labels = latencyData.map((p) =>
+    new Date(p.timestamp).toLocaleTimeString("fr-FR", {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    }),
+  );
+
+  const data = latencyData.map((p) => p.latency);
+  const colors = data.map((lat) => getLatencyColor(lat));
 
   const chartData = {
-    labels: latencyData.map((p) =>
-      new Date(p.timestamp).toLocaleTimeString('fr-FR', {
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-      })
-    ),
+    labels,
     datasets: [
       {
-        label: 'Latence',
-        data: latencyData.map((p) => p.latency),
-        borderColor: '#4ade80',
-        backgroundColor: 'transparent',
+        label: "Latence",
+        data,
+        borderColor: "#a8a29e",
+        backgroundColor: "transparent",
         tension: 0.4,
         pointRadius: 3,
         pointHoverRadius: 5,
-        pointBackgroundColor: (ctx: { parsed: { y: number | null } }) => getLatencyColor(ctx.parsed.y),
+        pointBackgroundColor: colors,
         spanGaps: true,
-        segment: {
-          borderColor: (ctx: ScriptableLineSegmentContext) => {
-            return getLatencyColor(ctx.p1.parsed.y as number | null)
-          },
-        },
       },
     ],
-  }
-
-  const options = {
-    responsive: true,
-    maintainAspectRatio: false,
-    animation: { duration: 0 },
-    interaction: {
-      mode: 'nearest' as const,
-      intersect: false,
-      axis: 'x' as const,
-    },
-    plugins: {
-      legend: { display: false },
-      tooltip: { enabled: false },
-    },
-    scales: {
-      x: {
-        grid: { color: 'rgba(120, 113, 108, 0.2)' },
-        ticks: { color: 'rgba(231, 229, 228, 0.6)', font: { size: 10 }, maxTicksLimit: 6 },
-      },
-      y: {
-        beginAtZero: true,
-        suggestedMax: 300,
-        grid: { color: 'rgba(120, 113, 108, 0.2)' },
-        ticks: { color: 'rgba(231, 229, 228, 0.6)', font: { size: 10 } },
-      },
-    },
-  }
+  };
 
   return (
     <div className="mt-6 bg-stone-900/60 border border-stone-700/50 rounded-lg p-4">
@@ -94,12 +93,12 @@ export const PingGraph = ({ latencyData }: PingGraphProps) => {
           Latence Réseau
         </h3>
         <span className={`text-sm font-semibold ${getCurrentLatencyColor(currentLatency)}`}>
-          {currentLatency === null ? '--' : `${currentLatency} ms`}
+          {currentLatency === null ? "--" : `${currentLatency} ms`}
         </span>
       </div>
 
       <div className="h-32">
-        <Line data={chartData} options={options} />
+        <Line key={labels.length} data={chartData} options={options} />
       </div>
 
       <div className="mt-3 flex items-center justify-center gap-4 text-xs">
@@ -117,5 +116,5 @@ export const PingGraph = ({ latencyData }: PingGraphProps) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
