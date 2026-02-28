@@ -1,0 +1,80 @@
+[
+  {
+    "category": "Dependencies",
+    "description": "Install Zod for runtime type validation and parsing",
+    "steps": "Run 'bun add zod' and verify zod appears in package.json dependencies. Check node_modules/zod exists.",
+    "passes": true
+  },
+  {
+    "category": "Cleanup",
+    "description": "Remove all default Vite/React boilerplate from App.tsx",
+    "steps": "Open src/App.tsx - should only contain imports, App function with medieval content, and export. No vite logo, react logo, or counter code.",
+    "passes": false
+  },
+  {
+    "category": "Cleanup",
+    "description": "Remove unused CSS from App.css",
+    "steps": "Open src/App.css - should be empty or contain only medieval-themed styles. No logo, card, or read-the-docs classes.",
+    "passes": false
+  },
+  {
+    "category": "Cleanup",
+    "description": "Delete unused asset files (react.svg)",
+    "steps": "Check src/assets/ directory. react.svg should not exist. Only keep files actively used.",
+    "passes": false
+  },
+  {
+    "category": "Schema",
+    "description": "Create Zod schema for status.json API response",
+    "steps": "Create schema with: server_name (string), player_count (number), error (string.nullable()), last_status_update (string), server_type (string), platform (string), password_protected (boolean), vac_enabled (boolean), port (number), steam_id (number), keywords (string), game_id (number), players (array). Export TypeScript type inferred from schema.",
+    "passes": false
+  },
+  {
+    "category": "Data Fetching",
+    "description": "Create TanStack Query hook with 5-second polling",
+    "steps": "Hook named useServerStatus(). Uses useQuery with queryKey ['server-status']. refetchInterval: 5000. staleTime: 0. Parses response with Zod schema. Returns typed data, isLoading, error states.",
+    "passes": false
+  },
+  {
+    "category": "UI",
+    "description": "Create medieval-themed dark color scheme in index.css",
+    "steps": "CSS uses: background #0d0d0d or dark forest green (#1a2f1a), stone gray (#4a4a4a) for borders, amber/gold (#d4a853) accents, parchment/cream (#f5e6d3) for text. Import medieval-looking Google Font (Cinzel, MedievalSharp, or similar).",
+    "passes": false
+  },
+  {
+    "category": "UI",
+    "description": "Build main server status display component",
+    "steps": "Shows: Server name as main heading, Player count with medieval icon, Online status indicator (green stone/rune when no error, red when error), Last update time formatted nicely. All styled with medieval borders, shadows, and typography.",
+    "passes": false
+  },
+  {
+    "category": "UI",
+    "description": "Implement player list section",
+    "steps": "If players array has items, show expandable/collapsible section listing player names. Empty state shows 'No warriors present' or similar medieval message. Styled with medieval borders.",
+    "passes": false
+  },
+  {
+    "category": "UI",
+    "description": "Create medieval error display component",
+    "steps": "When error field exists in JSON response: Show dark red/blood colored banner, skull or warning icon, 'The server spirits are restless' or similar message, display the actual error text. Styled like a tattered scroll or stone tablet with cracks.",
+    "passes": false
+  },
+  {
+    "category": "UI",
+    "description": "Hide UI during refresh (no loading indicators)",
+    "steps": "During data refetching: Display nothing or keep previous data visible. No spinners, no loading text, no skeleton screens. UI simply shows current data until new data arrives. isLoading from first fetch can show initial loading state but subsequent polls should be invisible.",
+    "passes": false
+  },
+  {
+    "category": "UX",
+    "description": "Handle initial loading state gracefully",
+    "steps": "First load shows loading state (medieval themed - 'Summoning server spirits...'). Once data arrives, display content. Subsequent 5-second polls happen silently without UI disruption.",
+    "passes": false
+  },
+  {
+    "category": "Build",
+    "description": "Project builds successfully with no errors",
+    "steps": "Run 'bun run build'. Build completes with exit code 0. No TypeScript errors. No ESLint errors. Output files in dist/ directory.",
+    "passes": false
+  }
+]
