@@ -18,3 +18,18 @@
 - Files changed: src/usePingLatency.ts (new)
 - Blockers: None. Ready for PingGraph component (Item 3)
 
+## 2025-03-01 - Item 3: PingGraph Component
+- Created PingGraph.tsx with Chart.js line graph
+- Decisions:
+  - Used segment.borderColor for dynamic line coloring (green/yellow/red)
+  - Gradient fill under line (green→yellow→red from bottom to top)
+  - French locale time labels (HH:MM:SS)
+  - Medieval theme tooltips (amber title, stone background)
+  - Fixed height 128px (h-32), responsive width
+  - No animation for smooth 1s updates
+  - Current latency indicator in header with color coding
+  - Legend with three color ranges at bottom
+- Key constraint: spanGaps: true for null latency values
+- Files changed: src/PingGraph.tsx (new)
+- Blockers: None. Ready for integration (Item 5)
+
