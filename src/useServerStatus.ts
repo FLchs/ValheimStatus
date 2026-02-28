@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import { ServerStatusSchema, type ServerStatus } from './types'
 
 const fetchServerStatus = async (): Promise<ServerStatus> => {
-  const response = await fetch('https://YOUR_SERVER_ADDRESS/status.json')
+  const response = await fetch('/status.json')
   
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`)
