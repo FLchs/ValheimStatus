@@ -37,9 +37,8 @@ you cut will be cut again. \
 Fight entropy. Leave the codebase better than you found it. \
 Quality over speed. Small steps compound into big progress. \
 2. Check any feedback loops, such as types and tests. \
-a. TypeScript: yarn run typecheck (must pass with no errors) \
-b. Tests: yarn run test (must pass) \
-c. Lint: yarn run lint (must pass) \
+a. TypeScript: bun run typecheck (must pass with no errors) \
+c. Lint: bun run lint (must pass) \
 3. Append your progress to the progress.txt file. \
 - Task completed and PRD item reference \
 - Key decisions made and reasoning \
@@ -51,7 +50,7 @@ Before committing, run ALL feedback loops: \
 Do NOT commit if any feedback loop fails. Fix issues first. \
 ONLY WORK ON A SINGLE FEATURE. \
 If, while implementing the feature, you notice that all work \
-is complete, output <promise>COMPLETE</promise>. \
+is complete, output <promise>COMPLETE</promise>. DONT EVER OUTPUT IT IF TASKS ARE REMAINING. \
 ")
 
   echo "$result"
