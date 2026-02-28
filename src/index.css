@@ -1,6 +1,6 @@
-@import "tailwindcss";
-
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;700&display=swap');
+
+@import "tailwindcss";
 
 :root {
   --color-bg-primary: #0a0f0d;
@@ -23,7 +23,11 @@
 body {
   margin: 0;
   font-family: 'Cinzel', serif;
-  background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%);
+  background-image: url('/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   min-height: 100vh;
   color: var(--color-parchment);
 }
@@ -31,4 +35,5 @@ body {
 #root {
   width: 100%;
   min-height: 100vh;
+  background-color: rgba(10, 15, 13, 0.85);
 }
