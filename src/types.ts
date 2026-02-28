@@ -13,7 +13,6 @@ export const ServerStatusSchema = z.object({
   platform: z.string(),
   player_count: z.number(),
   password_protected: z.boolean(),
-  vac_enabled: z.boolean(),
   port: z.number(),
   steam_id: z.number(),
   keywords: z.string(),
