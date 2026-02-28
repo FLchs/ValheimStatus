@@ -33,3 +33,18 @@
 - Files changed: src/PingGraph.tsx (new)
 - Blockers: None. Ready for integration (Item 5)
 
+## 2025-03-01 - Item 5: Integration
+- Integrated usePingLatency hook and PingGraph into App.tsx
+- Decisions:
+  - Replaced useServerStatus with usePingLatency (returns both latencyData + serverStatus)
+  - Added LatencyDataPoint type export to hook for ServerCard props
+  - Positioned PingGraph between server address and player list
+  - ServerCard receives latencyData as prop, passes to PingGraph
+  - Loading/error states preserved exactly as before
+  - PlayerList still receives players from serverStatus
+- Risk mitigated: Single integration point, minimal changes to existing code
+- Files changed: src/App.tsx, src/usePingLatency.ts (export)
+- Blockers: None. Performance testing next (Item 6)
+  - Verify no memory leaks, data capped at 300 points
+  - Monitor 1s updates don't cause CPU spikes
+

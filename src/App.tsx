@@ -1,4 +1,5 @@
-import { useServerStatus } from "./useServerStatus";
+import { usePingLatency, type LatencyDataPoint } from "./usePingLatency";
+import { PingGraph } from "./PingGraph";
 import type { ServerStatus, Player } from "./types";
 
 const LoadingView = () => (
@@ -80,7 +81,7 @@ const PlayerList = ({ players }: { players: Player[] }) => {
   );
 };
 
-const ServerCard = ({ data }: { data: ServerStatus }) => {
+const ServerCard = ({ data, latencyData }: { data: ServerStatus; latencyData: LatencyDataPoint[] }) => {
   const hasError = data.error !== null;
 
   return (
@@ -159,6 +160,9 @@ const ServerCard = ({ data }: { data: ServerStatus }) => {
           </div>
         </div>
 
+        {/* Ping Graph */}
+        <PingGraph latencyData={latencyData} />
+
         {/* Player List */}
         <PlayerList players={data.players} />
 
@@ -194,10 +198,10 @@ const ServerCard = ({ data }: { data: ServerStatus }) => {
 };
 
 function App() {
-  const { data, isLoading, error } = useServerStatus();
+  const { latencyData, serverStatus, isLoading, error } = usePingLatency();
 
   // Initial loading state - show medieval loading screen
-  if (isLoading && !data) {
+  if (isLoading && !serverStatus) {
     return <LoadingView />;
   }
 
@@ -219,8 +223,8 @@ function App() {
   }
 
   // Show server status (with silent refresh - no loading indicators during refetch)
-  if (data) {
-    return <ServerCard data={data} />;
+  if (serverStatus) {
+    return <ServerCard data={serverStatus} latencyData={latencyData} />;
   }
 
   return null;

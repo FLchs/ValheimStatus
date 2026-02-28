@@ -49,8 +49,7 @@ Keep entries concise. Sacrifice grammar for the sake of concision. This file hel
 Before committing, run ALL feedback loops: \
 Do NOT commit if any feedback loop fails. Fix issues first. \
 ONLY WORK ON A SINGLE FEATURE. \
-If, while implementing the feature, you notice that all work \
-is complete, output <promise>COMPLETE</promise>. DONT EVER OUTPUT IT IF TASKS ARE REMAINING. \
+If, while implementing the feature, you notice that each tasks in the PRD are passing, output <promise>COMPLETE</promise>. \
 ")
 
   echo "$result"
