@@ -189,7 +189,9 @@ const ServerCard = ({ data, currentLatency }: { data: ServerStatus; currentLaten
         {/* Footer */}
         <div className="mt-6 pt-4 border-t border-stone-700/30 text-center">
           <p className="text-xs text-parchment/30">
-            Conçu par <span className="text-amber-500/70 font-medium">François Lachèse</span>
+            <a href="https://github.com/FLchs/ValheimStatus" target="_blank" rel="noopener noreferrer" className="text-amber-500/70 hover:text-amber-400 transition-colors">
+              github.com/FLchs/ValheimStatus
+            </a>
           </p>
         </div>
       </div>
