@@ -156,7 +156,7 @@ const ServerCard = ({ data, currentLatency }: { data: ServerStatus; currentLaten
         <div className="bg-stone-900/50 rounded p-3 mb-6 text-center">
           <div className="text-xs text-parchment/40 uppercase mb-1">Adresse du Serveur</div>
           <div className="text-xl font-bold text-amber-400 tracking-wider font-mono">
-            YOUR_SERVER_ADDRESS
+            {import.meta.env.VITE_SERVER_ADDRESS}
           </div>
         </div>
 
@@ -178,7 +178,7 @@ const ServerCard = ({ data, currentLatency }: { data: ServerStatus; currentLaten
             <li>
               Entrer :{" "}
               <span className="text-amber-400 font-bold tracking-wider font-mono">
-                YOUR_SERVER_ADDRESS:{data.port}
+                {import.meta.env.VITE_SERVER_ADDRESS}:{data.port}
               </span>
             </li>
             <li>Entrer le mot de passe si nécessaire</li>
