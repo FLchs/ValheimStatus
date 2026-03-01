@@ -44,15 +44,8 @@ const getPointColor = (latency: number | null): string => {
   return "#f87171";
 };
 
-// Data point with per-point styling properties
-type DataPoint = {
-  x: number;
-  y: number | null;
-  pointBackgroundColor: string;
-  pointBorderColor: string;
-  pointRadius: number;
-  pointHoverRadius: number;
-};
+// Type for our data point
+type DataPoint = { x: number; y: number | null };
 
 export const LatencyChart = ({ latency }: LatencyChartProps) => {
   // Use ref to track current latency for onRefresh callback
@@ -71,15 +64,14 @@ export const LatencyChart = ({ latency }: LatencyChartProps) => {
           data: [] as DataPoint[],
           borderColor: "#a8a29e",
           backgroundColor: "transparent",
+          pointBackgroundColor: [] as string[],
+          pointBorderColor: "transparent",
+          pointRadius: [] as number[],
+          pointHoverRadius: [] as number[],
           borderWidth: 2,
           tension: 0.3,
           fill: false,
           spanGaps: false,
-          // Enable per-point styling
-          parsing: {
-            xAxisKey: "x",
-            yAxisKey: "y",
-          },
         },
       ],
     }),
@@ -90,7 +82,6 @@ export const LatencyChart = ({ latency }: LatencyChartProps) => {
     () => ({
       responsive: true,
       maintainAspectRatio: false,
-      parsing: false as const,
       plugins: {
         legend: {
           display: false,
@@ -119,23 +110,30 @@ export const LatencyChart = ({ latency }: LatencyChartProps) => {
         x: {
           type: "realtime" as const,
           realtime: {
-            duration: 30000,
-            refresh: 1000,
-            delay: 1000,
+            duration: 30000, // 30 seconds window
+            refresh: 1000, // Refresh every second
+            delay: 1000, // 1 second delay
             onRefresh: (chart: Chart) => {
               const currentLatency = latencyRef.current;
               const now = Date.now();
               const pointColor = getPointColor(currentLatency);
-              const dataset = chart.data.datasets[0] as { data: DataPoint[] };
+              const dataset = chart.data.datasets[0] as {
+                data: DataPoint[];
+                pointBackgroundColor: string[];
+                pointRadius: number[];
+                pointHoverRadius: number[];
+              };
 
+              // Push new data point
               dataset.data.push({
                 x: now,
                 y: currentLatency,
-                pointBackgroundColor: pointColor,
-                pointBorderColor: "transparent",
-                pointRadius: 2,
-                pointHoverRadius: 5,
               });
+
+              // Store point styling in separate arrays
+              dataset.pointBackgroundColor.push(pointColor);
+              dataset.pointRadius.push(2);
+              dataset.pointHoverRadius.push(5);
             },
           },
           grid: {
@@ -172,7 +170,7 @@ export const LatencyChart = ({ latency }: LatencyChartProps) => {
         mode: "index" as const,
       },
       animation: {
-        duration: 0,
+        duration: 0, // Disable animation for smooth streaming
       },
     }),
     [],
