@@ -1,4 +1,5 @@
 import { useMemo, useRef, useEffect } from "react";
+import { Trans } from "@lingui/macro";
 import {
   Chart as ChartJS,
   LinearScale,
@@ -60,7 +61,7 @@ export const LatencyChart = ({ latency }: LatencyChartProps) => {
     () => ({
       datasets: [
         {
-          label: "Latence",
+          label: "Latency",
           data: [] as DataPoint[],
           borderColor: "#a8a29e",
           backgroundColor: "rgba(168, 162, 158, 0.1)",
@@ -170,7 +171,7 @@ export const LatencyChart = ({ latency }: LatencyChartProps) => {
     <div className="mt-6 border rounded-lg p-4 bg-stone-900/60 border-stone-700/50">
       <div className="flex items-center justify-between mb-3">
         <h3 className="text-sm font-semibold tracking-wider uppercase text-amber-400/80">
-          Latence Réseau
+          <Trans>Network Latency</Trans>
         </h3>
         <span className={`text-sm font-semibold ${getCurrentLatencyColor(latency)}`}>
           {latency === null ? "--" : `${latency} ms`}
@@ -184,15 +185,21 @@ export const LatencyChart = ({ latency }: LatencyChartProps) => {
       <div className="mt-3 flex items-center justify-center gap-4 text-xs">
         <div className="flex items-center gap-1.5">
           <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#4ade80" }} />
-          <span className="text-parchment/60">Bonne (&lt; 100ms)</span>
+          <span className="text-parchment/60">
+            <Trans>Good (&lt; 100ms)</Trans>
+          </span>
         </div>
         <div className="flex items-center gap-1.5">
           <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#facc15" }} />
-          <span className="text-parchment/60">Moyenne (100-300ms)</span>
+          <span className="text-parchment/60">
+            <Trans>Average (100-300ms)</Trans>
+          </span>
         </div>
         <div className="flex items-center gap-1.5">
           <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#f87171" }} />
-          <span className="text-parchment/60">Mauvaise (&gt; 300ms)</span>
+          <span className="text-parchment/60">
+            <Trans>Poor (&gt; 300ms)</Trans>
+          </span>
         </div>
       </div>
     </div>

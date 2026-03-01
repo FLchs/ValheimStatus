@@ -1,0 +1,144 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-03-01 13:00+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: en\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/LatencyChart.tsx:195
+msgid "Average (100-300ms)"
+msgstr "Average (100-300ms)"
+
+#: src/App.tsx:211
+msgid "Begin your adventure!"
+msgstr "Begin your adventure!"
+
+#: src/App.tsx:203
+msgid "Click \"Join Game\" in the main menu"
+msgstr "Click \"Join Game\" in the main menu"
+
+#: src/App.tsx:243
+msgid "Connection Failed"
+msgstr "Connection Failed"
+
+#: src/App.tsx:53
+msgid "Corrupted"
+msgstr "Corrupted"
+
+#: src/App.tsx:167
+msgid "Dedicated"
+msgstr "Dedicated"
+
+#: src/App.tsx:210
+msgid "Enter password if required"
+msgstr "Enter password if required"
+
+#. placeholder {0}: import.meta.env.VITE_SERVER_ADDRESS
+#. placeholder {1}: data.port
+#: src/App.tsx:206
+msgid "Enter: <0>{0}:{1}</0>"
+msgstr "Enter: <0>{0}:{1}</0>"
+
+#: src/LatencyChart.tsx:189
+msgid "Good (< 100ms)"
+msgstr "Good (< 100ms)"
+
+#: src/App.tsx:199
+msgid "How to Join"
+msgstr "How to Join"
+
+#: src/App.tsx:13
+msgid "Invoking the Server Spirits..."
+msgstr "Invoking the Server Spirits..."
+
+#: src/App.tsx:202
+msgid "Launch Valheim"
+msgstr "Launch Valheim"
+
+#: src/App.tsx:159
+msgid "Linux"
+msgstr "Linux"
+
+#: src/LatencyChart.tsx:174
+msgid "Network Latency"
+msgstr "Network Latency"
+
+#: src/App.tsx:175
+msgid "No"
+msgstr "No"
+
+#: src/App.tsx:63
+msgid "No warriors present in this realm"
+msgstr "No warriors present in this realm"
+
+#: src/App.tsx:53
+msgid "Online"
+msgstr "Online"
+
+#: src/App.tsx:172
+msgid "Password"
+msgstr "Password"
+
+#: src/App.tsx:156
+msgid "Platform"
+msgstr "Platform"
+
+#: src/LatencyChart.tsx:201
+msgid "Poor (> 300ms)"
+msgstr "Poor (> 300ms)"
+
+#: src/App.tsx:146
+msgid "Port"
+msgstr "Port"
+
+#: src/App.tsx:204
+msgid "Select the \"Join by IP\" tab"
+msgstr "Select the \"Join by IP\" tab"
+
+#: src/App.tsx:183
+msgid "Server Address"
+msgstr "Server Address"
+
+#: src/App.tsx:127
+msgid "Status"
+msgstr "Status"
+
+#: src/App.tsx:246
+msgid "The ancient runes cannot reach the server spirits"
+msgstr "The ancient runes cannot reach the server spirits"
+
+#: src/App.tsx:16
+msgid "The runes are aligning"
+msgstr "The runes are aligning"
+
+#: src/App.tsx:31
+msgid "The server <0>{serverName}</0> has encountered a sinister presence"
+msgstr "The server <0>{serverName}</0> has encountered a sinister presence"
+
+#: src/App.tsx:28
+msgid "The Spirits are Restless"
+msgstr "The Spirits are Restless"
+
+#: src/App.tsx:164
+msgid "Type"
+msgstr "Type"
+
+#: src/App.tsx:135
+msgid "Warriors"
+msgstr "Warriors"
+
+#: src/App.tsx:72
+msgid "Warriors Present"
+msgstr "Warriors Present"
+
+#: src/App.tsx:175
+msgid "Yes"
+msgstr "Yes"

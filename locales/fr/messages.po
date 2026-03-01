@@ -1,0 +1,138 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-03-01 13:00+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: fr\n"
+
+#: src/LatencyChart.tsx:195
+msgid "Average (100-300ms)"
+msgstr "Moyenne (100-300ms)"
+
+#: src/App.tsx:211
+msgid "Begin your adventure!"
+msgstr "Commencez votre aventure !"
+
+#: src/App.tsx:203
+msgid "Click \"Join Game\" in the main menu"
+msgstr "Cliquer sur \"Rejoindre une Partie\" dans le menu principal"
+
+#: src/App.tsx:243
+msgid "Connection Failed"
+msgstr "La Connexion a Échoué"
+
+#: src/App.tsx:53
+msgid "Corrupted"
+msgstr "Corrompu"
+
+#: src/App.tsx:167
+msgid "Dedicated"
+msgstr "Dédié"
+
+#: src/App.tsx:210
+msgid "Enter password if required"
+msgstr "Entrer le mot de passe si nécessaire"
+
+#. placeholder {0}: import.meta.env.VITE_SERVER_ADDRESS
+#. placeholder {1}: data.port
+#: src/App.tsx:206
+msgid "Enter: <0>{0}:{1}</0>"
+msgstr "Entrer : <0>{0}:{1}</0>"
+
+#: src/LatencyChart.tsx:189
+msgid "Good (< 100ms)"
+msgstr "Bonne (< 100ms)"
+
+#: src/App.tsx:199
+msgid "How to Join"
+msgstr "Comment Rejoindre"
+
+#: src/App.tsx:13
+msgid "Invoking the Server Spirits..."
+msgstr "Invocation des Esprits du Serveur..."
+
+#: src/App.tsx:202
+msgid "Launch Valheim"
+msgstr "Lancer Valheim"
+
+#: src/App.tsx:159
+msgid "Linux"
+msgstr "Linux"
+
+#: src/LatencyChart.tsx:174
+msgid "Network Latency"
+msgstr "Latence Réseau"
+
+#: src/App.tsx:175
+msgid "No"
+msgstr "Non"
+
+#: src/App.tsx:63
+msgid "No warriors present in this realm"
+msgstr "Aucun guerrier présent dans ce royaume"
+
+#: src/App.tsx:53
+msgid "Online"
+msgstr "En Ligne"
+
+#: src/App.tsx:172
+msgid "Password"
+msgstr "Mot de Passe"
+
+#: src/App.tsx:156
+msgid "Platform"
+msgstr "Plateforme"
+
+#: src/LatencyChart.tsx:201
+msgid "Poor (> 300ms)"
+msgstr "Mauvaise (> 300ms)"
+
+#: src/App.tsx:146
+msgid "Port"
+msgstr "Port"
+
+#: src/App.tsx:204
+msgid "Select the \"Join by IP\" tab"
+msgstr "Sélectionner l'onglet \"Rejoindre par IP\""
+
+#: src/App.tsx:183
+msgid "Server Address"
+msgstr "Adresse du Serveur"
+
+#: src/App.tsx:127
+msgid "Status"
+msgstr "État"
+
+#: src/App.tsx:246
+msgid "The ancient runes cannot reach the server spirits"
+msgstr "Les anciennes runes ne peuvent pas atteindre les esprits du serveur"
+
+#: src/App.tsx:16
+msgid "The runes are aligning"
+msgstr "Les runes s'alignent"
+
+#: src/App.tsx:31
+msgid "The server <0>{serverName}</0> has encountered a sinister presence"
+msgstr "Le serveur <0>{serverName}</0> a rencontré une présence sinistre"
+
+#: src/App.tsx:28
+msgid "The Spirits are Restless"
+msgstr "Les Esprits sont Agités"
+
+#: src/App.tsx:164
+msgid "Type"
+msgstr "Type"
+
+#: src/App.tsx:135
+msgid "Warriors"
+msgstr "Guerriers"
+
+#: src/App.tsx:72
+msgid "Warriors Present"
+msgstr "Guerriers Présents"
+
+#: src/App.tsx:175
+msgid "Yes"
+msgstr "Oui"
