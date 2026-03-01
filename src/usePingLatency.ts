@@ -16,7 +16,6 @@ interface UsePingLatencyReturn {
 const MAX_DATA_POINTS = 300
 const PING_INTERVAL = 1000
 const STATUS_REFRESH_INTERVAL = 5000
-const API_URL = import.meta.env.VITE_API_URL || ''
 
 export const usePingLatency = (): UsePingLatencyReturn => {
   const [latencyData, setLatencyData] = useState<LatencyDataPoint[]>([])
@@ -32,9 +31,10 @@ export const usePingLatency = (): UsePingLatencyReturn => {
     const startTime = performance.now()
     const controller = new AbortController()
     abortControllerRef.current = controller
+    const apiUrl = import.meta.env.VITE_API_URL || ''
 
     try {
-      const response = await fetch(`${API_URL}/status.json`, {
+      const response = await fetch(`${apiUrl}/status.json`, {
         signal: controller.signal,
       })
 
@@ -68,8 +68,9 @@ export const usePingLatency = (): UsePingLatencyReturn => {
   }, [])
 
   const fetchServerStatus = useCallback(async () => {
+    const apiUrl = import.meta.env.VITE_API_URL || ''
     try {
-      const response = await fetch(`${API_URL}/status.json`)
+      const response = await fetch(`${apiUrl}/status.json`)
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
