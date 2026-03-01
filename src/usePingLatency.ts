@@ -31,10 +31,12 @@ export const usePingLatency = (): UsePingLatencyReturn => {
     const startTime = performance.now()
     const controller = new AbortController()
     abortControllerRef.current = controller
-    const apiUrl = import.meta.env.VITE_API_URL || ''
+    const apiUrl = import.meta.env.VITE_API_URL
+    // Use relative path for proxy in dev, full URL in production
+    const url = apiUrl ? `${apiUrl}/status.json` : '/status.json'
 
     try {
-      const response = await fetch(`${apiUrl}/status.json`, {
+      const response = await fetch(url, {
         signal: controller.signal,
       })
 
@@ -68,9 +70,11 @@ export const usePingLatency = (): UsePingLatencyReturn => {
   }, [])
 
   const fetchServerStatus = useCallback(async () => {
-    const apiUrl = import.meta.env.VITE_API_URL || ''
+    const apiUrl = import.meta.env.VITE_API_URL
+    // Use relative path for proxy in dev, full URL in production
+    const url = apiUrl ? `${apiUrl}/status.json` : '/status.json'
     try {
-      const response = await fetch(`${apiUrl}/status.json`)
+      const response = await fetch(url)
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
