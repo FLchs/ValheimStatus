@@ -2,6 +2,8 @@
 
 A real-time monitoring dashboard for Valheim game servers.
 
+![Screenshot](screenshot.png)
+
 ## Features
 
 - **Real-time monitoring** - Automatic updates every 5 seconds
