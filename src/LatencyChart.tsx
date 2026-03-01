@@ -11,7 +11,7 @@ import {
   type Chart,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import StreamingPlugin from "chartjs-plugin-streaming";
+import { StreamingPlugin } from "@aziham/chartjs-plugin-streaming";
 import "chartjs-adapter-luxon";
 
 // Register Chart.js components and streaming plugin
@@ -37,15 +37,15 @@ const getCurrentLatencyColor = (latency: number | null): string => {
   return "text-red-400";
 };
 
+// Type for our data point with color
+type DataPoint = { x: number; y: number | null };
+
 const getPointColor = (latency: number | null): string => {
   if (latency === null) return "rgba(120, 113, 108, 0.6)";
   if (latency < 100) return "#4ade80";
   if (latency <= 300) return "#facc15";
   return "#f87171";
 };
-
-// Type for our data point
-type DataPoint = { x: number; y: number | null };
 
 export const LatencyChart = ({ latency }: LatencyChartProps) => {
   // Use ref to track current latency for onRefresh callback
@@ -63,14 +63,16 @@ export const LatencyChart = ({ latency }: LatencyChartProps) => {
           label: "Latence",
           data: [] as DataPoint[],
           borderColor: "#a8a29e",
-          backgroundColor: "transparent",
-          pointBackgroundColor: [] as string[],
+          backgroundColor: "rgba(168, 162, 158, 0.1)",
+          pointBackgroundColor: (context: { parsed: { y: number | null } }) => {
+            return getPointColor(context.parsed?.y ?? null);
+          },
           pointBorderColor: "transparent",
-          pointRadius: [] as number[],
-          pointHoverRadius: [] as number[],
+          pointRadius: 4,
+          pointHoverRadius: 6,
           borderWidth: 2,
-          tension: 0.3,
-          fill: false,
+          tension: 0.4,
+          fill: true,
           spanGaps: false,
         },
       ],
@@ -116,12 +118,8 @@ export const LatencyChart = ({ latency }: LatencyChartProps) => {
             onRefresh: (chart: Chart) => {
               const currentLatency = latencyRef.current;
               const now = Date.now();
-              const pointColor = getPointColor(currentLatency);
               const dataset = chart.data.datasets[0] as {
                 data: DataPoint[];
-                pointBackgroundColor: string[];
-                pointRadius: number[];
-                pointHoverRadius: number[];
               };
 
               // Push new data point
@@ -129,11 +127,6 @@ export const LatencyChart = ({ latency }: LatencyChartProps) => {
                 x: now,
                 y: currentLatency,
               });
-
-              // Store point styling in separate arrays
-              dataset.pointBackgroundColor.push(pointColor);
-              dataset.pointRadius.push(2);
-              dataset.pointHoverRadius.push(5);
             },
           },
           grid: {
@@ -141,10 +134,7 @@ export const LatencyChart = ({ latency }: LatencyChartProps) => {
             drawBorder: false,
           },
           ticks: {
-            color: "rgba(231, 229, 228, 0.6)",
-            font: {
-              size: 10,
-            },
+            display: false,
           },
         },
         y: {
@@ -194,15 +184,15 @@ export const LatencyChart = ({ latency }: LatencyChartProps) => {
       <div className="mt-3 flex items-center justify-center gap-4 text-xs">
         <div className="flex items-center gap-1.5">
           <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#4ade80" }} />
-          <span className="text-parchment/60">&lt; 100ms</span>
+          <span className="text-parchment/60">Bonne (&lt; 100ms)</span>
         </div>
         <div className="flex items-center gap-1.5">
           <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#facc15" }} />
-          <span className="text-parchment/60">100-300ms</span>
+          <span className="text-parchment/60">Moyenne (100-300ms)</span>
         </div>
         <div className="flex items-center gap-1.5">
           <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#f87171" }} />
-          <span className="text-parchment/60">&gt; 300ms</span>
+          <span className="text-parchment/60">Mauvaise (&gt; 300ms)</span>
         </div>
       </div>
     </div>
