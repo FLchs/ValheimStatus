@@ -1,9 +1,9 @@
-import { z } from 'zod'
+import { z } from "zod";
 
 export const PlayerSchema = z.object({
   name: z.string(),
   steam_id: z.string().optional(),
-})
+});
 
 export const ServerStatusSchema = z.object({
   last_status_update: z.string(),
@@ -18,7 +18,7 @@ export const ServerStatusSchema = z.object({
   keywords: z.string(),
   game_id: z.number(),
   players: z.array(PlayerSchema),
-})
+});
 
-export type ServerStatus = z.infer<typeof ServerStatusSchema>
-export type Player = z.infer<typeof PlayerSchema>
+export type ServerStatus = z.infer<typeof ServerStatusSchema>;
+export type Player = z.infer<typeof PlayerSchema>;

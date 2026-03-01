@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;700&display=swap");
 
 @import "tailwindcss";
 
@@ -22,8 +22,8 @@
 
 body {
   margin: 0;
-  font-family: 'Cinzel', serif;
-  background-image: url('/background.jpg');
+  font-family: "Cinzel", serif;
+  background-image: url("/background.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

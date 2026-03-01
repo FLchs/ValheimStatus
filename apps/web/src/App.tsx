@@ -29,8 +29,8 @@ const ErrorBanner = ({ serverName }: { serverName: string }) => (
         </h2>
         <p className="text-red-100/80 text-sm mb-3">
           <Trans>
-            The server <span className="text-amber-400 font-semibold">{serverName}</span> has encountered
-            a sinister presence
+            The server <span className="text-amber-400 font-semibold">{serverName}</span> has
+            encountered a sinister presence
           </Trans>
         </p>
       </div>
@@ -88,7 +88,13 @@ const PlayerList = ({ players }: { players: Player[] }) => {
   );
 };
 
-const ServerCard = ({ data, currentLatency }: { data: ServerStatus; currentLatency: number | null }) => {
+const ServerCard = ({
+  data,
+  currentLatency,
+}: {
+  data: ServerStatus;
+  currentLatency: number | null;
+}) => {
   const { i18n } = useLingui();
   const hasError = data.error !== null;
 
@@ -194,23 +200,41 @@ const ServerCard = ({ data, currentLatency }: { data: ServerStatus; currentLaten
             <Trans>How to Join</Trans>
           </h3>
           <ol className="text-parchment/80 text-sm space-y-2 list-decimal list-inside">
-            <li><Trans>Launch Valheim</Trans></li>
-            <li><Trans>Click "Join Game" in the main menu</Trans></li>
-            <li><Trans>Select the "Join by IP" tab</Trans></li>
+            <li>
+              <Trans>Launch Valheim</Trans>
+            </li>
+            <li>
+              <Trans>Click "Join Game" in the main menu</Trans>
+            </li>
+            <li>
+              <Trans>Select the "Join by IP" tab</Trans>
+            </li>
             <li>
               <Trans>
-                Enter: <span className="text-amber-400 font-bold tracking-wider font-mono">{import.meta.env.VITE_SERVER_ADDRESS}:{data.port}</span>
+                Enter:{" "}
+                <span className="text-amber-400 font-bold tracking-wider font-mono">
+                  {import.meta.env.VITE_SERVER_ADDRESS}:{data.port}
+                </span>
               </Trans>
             </li>
-            <li><Trans>Enter password if required</Trans></li>
-            <li><Trans>Begin your adventure!</Trans></li>
+            <li>
+              <Trans>Enter password if required</Trans>
+            </li>
+            <li>
+              <Trans>Begin your adventure!</Trans>
+            </li>
           </ol>
         </div>
 
         {/* Footer */}
         <div className="mt-6 pt-4 border-t border-stone-700/30 text-center space-y-4">
           <p className="text-xs text-parchment/30">
-            <a href="https://github.com/FLchs/ValheimStatus" target="_blank" rel="noopener noreferrer" className="text-amber-500/70 hover:text-amber-400 transition-colors">
+            <a
+              href="https://github.com/FLchs/ValheimStatus"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-amber-500/70 hover:text-amber-400 transition-colors"
+            >
               github.com/FLchs/ValheimStatus
             </a>
           </p>
@@ -250,7 +274,8 @@ function App() {
 
   // Show server status (with silent refresh - no loading indicators during refetch)
   if (serverStatus) {
-    const currentLatency = latencyData.length > 0 ? latencyData[latencyData.length - 1].latency : null;
+    const currentLatency =
+      latencyData.length > 0 ? latencyData[latencyData.length - 1].latency : null;
     return <ServerCard data={serverStatus} currentLatency={currentLatency} />;
   }
 
