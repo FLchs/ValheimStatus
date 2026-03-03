@@ -1,5 +1,5 @@
 import { useServerStatus } from "../hooks/useServerStatus";
-import { m } from "../paraglide/messages.js";
+import { m } from "../i18n/messages";
 
 const ServerDetailsGrid = () => {
   const { data } = useServerStatus();

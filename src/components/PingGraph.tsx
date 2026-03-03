@@ -1,8 +1,8 @@
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement } from "chart.js";
 import { usePingLatency } from "../hooks/usePingLatency";
-import { m } from "../paraglide/messages.js";
-import { getLocale } from "../paraglide/runtime.js";
+import { m } from "../i18n/messages";
+import { getLocale } from "../i18n/runtime";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement);
 

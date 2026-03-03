@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import ServerCard from "./components/ServerCard";
-import { m } from "./paraglide/messages.js";
-import { getLocale } from "./paraglide/runtime.js";
+import { m } from "./i18n/messages";
+import { getLocale } from "./i18n/runtime";
 
 function App() {
   useEffect(() => {
