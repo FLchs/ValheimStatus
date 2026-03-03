@@ -1,4 +1,5 @@
 import { m } from "../paraglide/messages.js";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const ServerFooter = () => (
   <div className="mt-6 pt-4 border-t border-stone-700/30 text-center">
@@ -6,6 +7,7 @@ const ServerFooter = () => (
       {m.designed_by()}{" "}
       <span className="text-amber-500/70 font-medium">François Lachèse</span>
     </p>
+    <LanguageSwitcher />
   </div>
 );
 
