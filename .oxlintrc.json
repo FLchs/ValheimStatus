@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
   "rules": {
-    "eqeqeq": "error",
+    "eqeqeq": ["error", "always", { "null": "never" }],
     "no-unused-vars": "error",
     "no-console": "warn",
     "no-debugger": "error",
