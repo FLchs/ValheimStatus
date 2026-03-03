@@ -1,8 +1,8 @@
-import { setLocale, getLocale } from "../i18n/runtime";
 import { m } from "../i18n/messages";
+import { useLocale } from "../i18n/LocaleContext";
 
 const LanguageSwitcher = () => {
-  const currentLocale = getLocale();
+  const { locale: currentLocale, setLocale } = useLocale();
 
   const handleSwitch = (locale: "en" | "fr") => {
     if (locale !== currentLocale) {
