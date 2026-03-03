@@ -1,4 +1,5 @@
 import { useServerStatus } from "../hooks/useServerStatus";
+import { m } from "../paraglide/messages.js";
 
 const StatusIndicator = () => {
   const { data, isLoading } = useServerStatus();
@@ -16,7 +17,7 @@ const StatusIndicator = () => {
           hasError ? "text-red-400" : "text-green-400"
         }`}
       >
-        {hasError ? "Corrompu" : "En Ligne"}
+        {hasError ? m.status_offline() : m.status_online()}
       </span>
     </div>
   );

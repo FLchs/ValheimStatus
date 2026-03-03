@@ -1,4 +1,5 @@
 import { useServerStatus } from "../hooks/useServerStatus";
+import { m } from "../paraglide/messages.js";
 
 const ErrorBanner = () => {
   const { data, isLoading } = useServerStatus();
@@ -13,11 +14,10 @@ const ErrorBanner = () => {
         <div className="text-5xl shrink-0">💀</div>
         <div className="flex-1">
           <h2 className="text-xl font-bold text-red-200 mb-2 font-['Cinzel_Decorative'] tracking-wider">
-            Les Esprits sont Agités
+            {m.error_server_title()}
           </h2>
           <p className="text-red-100/80 text-sm mb-3">
-            Le serveur <span className="text-amber-400 font-semibold">{data.server_name}</span> a rencontré
-            une présence sinistre
+            {m.error_server_message({ serverName: data.server_name })}
           </p>
         </div>
       </div>
