@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import ServerCard from "./components/ServerCard";
-import LanguageSwitcher from "./components/LanguageSwitcher";
 import { m } from "./paraglide/messages.js";
 import { getLocale } from "./paraglide/runtime.js";
 
@@ -11,12 +10,7 @@ function App() {
     document.documentElement.lang = getLocale();
   }, []);
 
-  return (
-    <>
-      <LanguageSwitcher />
-      <ServerCard />
-    </>
-  );
+  return <ServerCard />;
 }
 
 export default App;

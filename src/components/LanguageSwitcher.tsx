@@ -3,22 +3,38 @@ import { m } from "../paraglide/messages.js";
 
 const LanguageSwitcher = () => {
   const currentLocale = getLocale();
-  const targetLocale = currentLocale === "en" ? "fr" : "en";
 
-  const handleSwitch = () => {
-    setLocale(targetLocale);
+  const handleSwitch = (locale: "en" | "fr") => {
+    if (locale !== currentLocale) {
+      setLocale(locale);
+    }
   };
 
   return (
-    <button
-      onClick={handleSwitch}
-      className="fixed top-4 right-4 z-50 px-3 py-1.5 bg-stone-800/80 hover:bg-stone-700/80 border border-stone-600/50 rounded-md text-xs text-parchment/70 hover:text-parchment transition-colors duration-200 flex items-center gap-2"
-      aria-label={m.switch_language()}
-    >
-      <span className="font-medium">{currentLocale === "en" ? m.language_en() : m.language_fr()}</span>
-      <span className="text-parchment/40">|</span>
-      <span>{targetLocale === "en" ? m.language_en() : m.language_fr()}</span>
-    </button>
+    <div className="flex items-center justify-center gap-1 mt-3">
+      <button
+        onClick={() => handleSwitch("en")}
+        className={`px-2 py-1 text-xs rounded-l-md transition-all duration-200 ${
+          currentLocale === "en"
+            ? "bg-amber-600/80 text-white font-medium"
+            : "bg-stone-800/60 text-parchment/50 hover:text-parchment/70 hover:bg-stone-700/60"
+        }`}
+        aria-label={m.language_en()}
+      >
+        EN
+      </button>
+      <button
+        onClick={() => handleSwitch("fr")}
+        className={`px-2 py-1 text-xs rounded-r-md transition-all duration-200 ${
+          currentLocale === "fr"
+            ? "bg-amber-600/80 text-white font-medium"
+            : "bg-stone-800/60 text-parchment/50 hover:text-parchment/70 hover:bg-stone-700/60"
+        }`}
+        aria-label={m.language_fr()}
+      >
+        FR
+      </button>
+    </div>
   );
 };
 
