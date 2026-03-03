@@ -1,4 +1,4 @@
-import { z } from 'zod'
+import { z } from "zod";
 
 export const ServerStatusSchema = z.object({
   last_status_update: z.string(),
@@ -10,6 +10,6 @@ export const ServerStatusSchema = z.object({
   password_protected: z.boolean(),
   port: z.number(),
   keywords: z.string(),
-})
+});
 
-export type ServerStatus = z.infer<typeof ServerStatusSchema>
+export type ServerStatus = z.infer<typeof ServerStatusSchema>;
