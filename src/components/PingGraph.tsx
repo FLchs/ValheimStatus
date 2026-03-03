@@ -1,22 +1,18 @@
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement } from "chart.js";
-import type { LatencyDataPoint } from "./usePingLatency";
+import { usePingLatency } from "../hooks/usePingLatency";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement);
 
-interface PingGraphProps {
-  latencyData: LatencyDataPoint[];
-}
-
 const getLatencyColor = (latency: number | null): string => {
-  if (latency === null) return "#78716c";
+  if (latency == null) return "#78716c";
   if (latency < 100) return "#4ade80";
   if (latency <= 300) return "#facc15";
   return "#f87171";
 };
 
 const getCurrentLatencyColor = (latency: number | null): string => {
-  if (latency === null) return "text-stone-500";
+  if (latency == null) return "text-stone-500";
   if (latency < 100) return "text-green-400";
   if (latency <= 300) return "text-yellow-400";
   return "text-red-400";
@@ -48,7 +44,9 @@ const options = {
   },
 };
 
-export const PingGraph = ({ latencyData }: PingGraphProps) => {
+const PingGraph = () => {
+  const { latencyData } = usePingLatency();
+
   const currentLatency =
     latencyData.length > 0 ? latencyData[latencyData.length - 1].latency : null;
 
@@ -87,7 +85,7 @@ export const PingGraph = ({ latencyData }: PingGraphProps) => {
           Latence Réseau
         </h3>
         <span className={`text-sm font-semibold ${getCurrentLatencyColor(currentLatency)}`}>
-          {currentLatency === null ? "--" : `${currentLatency} ms`}
+          {currentLatency == null ? "--" : `${currentLatency} ms`}
         </span>
       </div>
 
@@ -112,3 +110,5 @@ export const PingGraph = ({ latencyData }: PingGraphProps) => {
     </div>
   );
 };
+
+export default PingGraph;

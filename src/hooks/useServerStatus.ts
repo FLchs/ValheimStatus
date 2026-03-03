@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { ServerStatusSchema, type ServerStatus } from "./types";
+import { ServerStatusSchema, type ServerStatus } from "../types";
 
 const fetchServerStatus = async (): Promise<ServerStatus> => {
   const response = await fetch("/status.json");
@@ -16,7 +16,6 @@ export const useServerStatus = () => {
   return useQuery({
     queryKey: ["server-status"],
     queryFn: fetchServerStatus,
-    refetchInterval: 5000,
     staleTime: 0,
     retry: 2,
   });
