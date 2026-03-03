@@ -1,4 +1,4 @@
-import { m } from "../paraglide/messages.js";
+import { m } from "../i18n/messages";
 
 const ServerHeader = () => (
   <div className="text-center mb-8">

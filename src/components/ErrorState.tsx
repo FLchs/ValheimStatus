@@ -1,4 +1,4 @@
-import { m } from "../paraglide/messages.js";
+import { m } from "../i18n/messages";
 
 const ErrorState = () => (
   <div className="min-h-screen flex items-center justify-center p-4">

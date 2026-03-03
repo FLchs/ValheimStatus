@@ -1,6 +1,6 @@
 import { useServerStatus } from "../hooks/useServerStatus";
 import StatusIndicator from "./StatusIndicator";
-import { m } from "../paraglide/messages.js";
+import { m } from "../i18n/messages";
 
 const ServerStatusGrid = () => {
   const { data } = useServerStatus();

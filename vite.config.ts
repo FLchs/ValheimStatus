@@ -12,6 +12,7 @@ export default defineConfig(({ mode }) => ({
       project: "./.inlang",
       outdir: "./src/paraglide",
       strategy: ["localStorage", "preferredLanguage", "baseLocale"],
+      emitTsDeclarations: false,
     }),
   ],
   server:

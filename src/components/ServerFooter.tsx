@@ -1,4 +1,4 @@
-import { m } from "../paraglide/messages.js";
+import { m } from "../i18n/messages";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 const ServerFooter = () => (

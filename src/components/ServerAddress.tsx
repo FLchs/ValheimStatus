@@ -1,4 +1,4 @@
-import { m } from "../paraglide/messages.js";
+import { m } from "../i18n/messages";
 
 const ServerAddress = () => (
   <div className="bg-stone-900/50 rounded p-3 mb-6 text-center">
