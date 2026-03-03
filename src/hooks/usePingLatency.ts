@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import { ServerStatusSchema, type ServerStatus } from "./types";
+import { ServerStatusSchema, type ServerStatus } from "../types";
 
 export interface LatencyDataPoint {
   timestamp: number;
@@ -86,11 +86,9 @@ export const usePingLatency = (): UsePingLatencyReturn => {
   }, []);
 
   useEffect(() => {
-    // Initial fetch for both
     fetchServerStatus();
     measurePing();
 
-    // Set up intervals
     pingIntervalRef.current = setInterval(measurePing, PING_INTERVAL);
     statusIntervalRef.current = setInterval(fetchServerStatus, STATUS_REFRESH_INTERVAL);
 
