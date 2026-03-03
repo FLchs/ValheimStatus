@@ -1,6 +1,8 @@
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement } from "chart.js";
 import { usePingLatency } from "../hooks/usePingLatency";
+import { m } from "../paraglide/messages.js";
+import { getLocale } from "../paraglide/runtime.js";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement);
 
@@ -50,8 +52,11 @@ const PingGraph = () => {
   const currentLatency =
     latencyData.length > 0 ? latencyData[latencyData.length - 1].latency : null;
 
+  const locale = getLocale();
+  const timeLocale = locale === "fr" ? "fr-FR" : "en-US";
+
   const labels = latencyData.map((p) =>
-    new Date(p.timestamp).toLocaleTimeString("fr-FR", {
+    new Date(p.timestamp).toLocaleTimeString(timeLocale, {
       hour: "2-digit",
       minute: "2-digit",
       second: "2-digit",
@@ -65,7 +70,7 @@ const PingGraph = () => {
     labels,
     datasets: [
       {
-        label: "Latence",
+        label: m.network_latency(),
         data,
         borderColor: "#a8a29e",
         backgroundColor: "transparent",
@@ -82,10 +87,10 @@ const PingGraph = () => {
     <div className="mt-6 bg-stone-900/60 border border-stone-700/50 rounded-lg p-4">
       <div className="flex items-center justify-between mb-3">
         <h3 className="text-amber-400/80 text-sm font-semibold tracking-wider uppercase">
-          Latence Réseau
+          {m.network_latency()}
         </h3>
         <span className={`text-sm font-semibold ${getCurrentLatencyColor(currentLatency)}`}>
-          {currentLatency == null ? "--" : `${currentLatency} ms`}
+          {currentLatency == null ? m.latency_unknown() : m.latency_ms({ latency: currentLatency })}
         </span>
       </div>
 
@@ -96,15 +101,15 @@ const PingGraph = () => {
       <div className="mt-3 flex items-center justify-center gap-4 text-xs">
         <div className="flex items-center gap-1.5">
           <div className="w-2 h-2 rounded-full bg-green-400" />
-          <span className="text-parchment/60">&lt; 100ms</span>
+          <span className="text-parchment/60">{m.latency_legend_good()}</span>
         </div>
         <div className="flex items-center gap-1.5">
           <div className="w-2 h-2 rounded-full bg-yellow-400" />
-          <span className="text-parchment/60">100-300ms</span>
+          <span className="text-parchment/60">{m.latency_legend_medium()}</span>
         </div>
         <div className="flex items-center gap-1.5">
           <div className="w-2 h-2 rounded-full bg-red-400" />
-          <span className="text-parchment/60">&gt; 300ms</span>
+          <span className="text-parchment/60">{m.latency_legend_poor()}</span>
         </div>
       </div>
     </div>
