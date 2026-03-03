@@ -1,6 +1,6 @@
 import { usePingLatency, type LatencyDataPoint } from "./usePingLatency";
 import { PingGraph } from "./PingGraph";
-import type { ServerStatus, Player } from "./types";
+import type { ServerStatus } from "./types";
 
 const LoadingView = () => (
   <div className="min-h-screen flex items-center justify-center">
@@ -48,40 +48,13 @@ const StatusIndicator = ({ hasError }: { hasError: boolean }) => (
   </div>
 );
 
-const PlayerList = ({ players }: { players: Player[] }) => {
-  if (players.length === 0) {
-    return (
-      <div className="mt-6 p-4 bg-stone-900/50 border border-stone-700/50 rounded-lg">
-        <p className="text-parchment/50 text-center italic">
-          Aucun guerrier présent dans ce royaume
-        </p>
-      </div>
-    );
-  }
-
-  return (
-    <div className="mt-6">
-      <h3 className="text-amber-400/80 text-sm font-semibold mb-3 tracking-wider uppercase">
-        Guerriers Présents
-      </h3>
-      <div className="bg-stone-900/30 border border-stone-700/30 rounded-lg p-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
-          {players.map((player, index) => (
-            <div
-              key={index}
-              className="flex items-center gap-2 p-2 bg-stone-800/50 rounded border border-stone-700/30"
-            >
-              <span className="text-amber-500">⚔️</span>
-              <span className="text-parchment/90 text-sm">{player.name}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const ServerCard = ({ data, latencyData }: { data: ServerStatus; latencyData: LatencyDataPoint[] }) => {
+const ServerCard = ({
+  data,
+  latencyData,
+}: {
+  data: ServerStatus;
+  latencyData: LatencyDataPoint[];
+}) => {
   const hasError = data.error !== null;
 
   return (
@@ -162,9 +135,6 @@ const ServerCard = ({ data, latencyData }: { data: ServerStatus; latencyData: La
 
         {/* Ping Graph */}
         <PingGraph latencyData={latencyData} />
-
-        {/* Player List */}
-        <PlayerList players={data.players} />
 
         {/* How to Join Instructions */}
         <div className="mt-6 p-4 bg-stone-900/60 border border-stone-700/50 rounded-lg">
