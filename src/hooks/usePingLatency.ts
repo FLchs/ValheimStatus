@@ -1,109 +1,73 @@
-import { useState, useEffect, useRef, useCallback } from "react";
-import { ServerStatusSchema, type ServerStatus } from "../types";
+import { useQuery } from "@tanstack/react-query";
+import { useState, useEffect } from "react";
 
 export interface LatencyDataPoint {
   timestamp: number;
   latency: number | null;
 }
 
-interface UsePingLatencyReturn {
-  latencyData: LatencyDataPoint[];
-  serverStatus: ServerStatus | null;
-  isLoading: boolean;
-  error: Error | null;
-}
-
 const MAX_DATA_POINTS = 300;
 const PING_INTERVAL = 1000;
-const STATUS_REFRESH_INTERVAL = 5000;
 
-export const usePingLatency = (): UsePingLatencyReturn => {
+interface PingResult {
+  latency: number | null;
+  timestamp: number;
+}
+
+const measurePing = async (signal: AbortSignal): Promise<PingResult> => {
+  const startTime = performance.now();
+
+  try {
+    const response = await fetch("/status.json", { signal });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const endTime = performance.now();
+    const latency = Math.round(endTime - startTime);
+
+    return { latency, timestamp: Date.now() };
+  } catch (err) {
+    if (err instanceof Error && err.name === "AbortError") {
+      throw err;
+    }
+    return { latency: null, timestamp: Date.now() };
+  }
+};
+
+export const usePingLatency = () => {
   const [latencyData, setLatencyData] = useState<LatencyDataPoint[]>([]);
-  const [serverStatus, setServerStatus] = useState<ServerStatus | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<Error | null>(null);
 
-  const abortControllerRef = useRef<AbortController | null>(null);
-  const pingIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const statusIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  const measurePing = useCallback(async () => {
-    const startTime = performance.now();
-    const controller = new AbortController();
-    abortControllerRef.current = controller;
-
-    try {
-      const response = await fetch("/status.json", {
-        signal: controller.signal,
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const endTime = performance.now();
-      const latency = Math.round(endTime - startTime);
-
-      setLatencyData((prev) => {
-        const newData = [...prev, { timestamp: Date.now(), latency }];
-        if (newData.length > MAX_DATA_POINTS) {
-          return newData.slice(newData.length - MAX_DATA_POINTS);
-        }
-        return newData;
-      });
-    } catch (err) {
-      if (err instanceof Error && err.name === "AbortError") {
-        return;
-      }
-
-      setLatencyData((prev) => {
-        const newData = [...prev, { timestamp: Date.now(), latency: null }];
-        if (newData.length > MAX_DATA_POINTS) {
-          return newData.slice(newData.length - MAX_DATA_POINTS);
-        }
-        return newData;
-      });
-    }
-  }, []);
-
-  const fetchServerStatus = useCallback(async () => {
-    try {
-      const response = await fetch("/status.json");
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      const parsed = ServerStatusSchema.parse(data);
-      setServerStatus(parsed);
-      setIsLoading(false);
-      setError(null);
-    } catch (err) {
-      setError(err instanceof Error ? err : new Error("Unknown error"));
-      setIsLoading(false);
-    }
-  }, []);
+  const { isLoading, error, isError, data } = useQuery({
+    queryKey: ["ping"],
+    queryFn: ({ signal }) => measurePing(signal),
+    refetchInterval: PING_INTERVAL,
+    retry: false,
+    staleTime: Infinity,
+  });
 
   useEffect(() => {
-    fetchServerStatus();
-    measurePing();
+    if (data) {
+      setLatencyData((prev) => {
+        const newData = [...prev, data];
+        if (newData.length > MAX_DATA_POINTS) {
+          return newData.slice(newData.length - MAX_DATA_POINTS);
+        }
+        return newData;
+      });
+    }
+  }, [data]);
 
-    pingIntervalRef.current = setInterval(measurePing, PING_INTERVAL);
-    statusIntervalRef.current = setInterval(fetchServerStatus, STATUS_REFRESH_INTERVAL);
+  const latestLatency = latencyData.length > 0
+    ? latencyData[latencyData.length - 1].latency
+    : null;
 
-    return () => {
-      if (pingIntervalRef.current) {
-        clearInterval(pingIntervalRef.current);
-      }
-      if (statusIntervalRef.current) {
-        clearInterval(statusIntervalRef.current);
-      }
-      if (abortControllerRef.current) {
-        abortControllerRef.current.abort();
-      }
-    };
-  }, [fetchServerStatus, measurePing]);
-
-  return { latencyData, serverStatus, isLoading, error };
+  return {
+    latencyData,
+    isLoading,
+    error,
+    isError,
+    latestLatency,
+  };
 };

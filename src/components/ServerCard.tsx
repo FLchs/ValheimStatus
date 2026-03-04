@@ -1,7 +1,5 @@
-import { usePingLatency } from "../hooks/usePingLatency";
 import { useServerStatus } from "../hooks/useServerStatus";
 import ErrorBanner from "./ErrorBanner";
-import ErrorState from "./ErrorState";
 import JoinInstructions from "./JoinInstructions";
 import LoadingView from "./LoadingView";
 import PingGraph from "./PingGraph";
@@ -14,17 +12,12 @@ import ServerStatusGrid from "./ServerStatusGrid";
 
 const ServerCard = () => {
   const { data: serverData, isLoading: isStatusLoading } = useServerStatus();
-  const { isLoading: isLatencyLoading, error: latencyError } = usePingLatency();
 
-  const isLoading = isStatusLoading || isLatencyLoading;
+  const isLoading = isStatusLoading;
   const hasError = serverData?.error != null;
 
   if (isLoading && !serverData) {
     return <LoadingView />;
-  }
-
-  if (latencyError) {
-    return <ErrorState />;
   }
 
   if (!serverData) {
