@@ -2,10 +2,15 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { paraglideVitePlugin } from "@inlang/paraglide-js";
+import { tanstackRouter } from "@tanstack/router-plugin/vite";
 
 // https://vite.dev/config/
-export default defineConfig(({ mode }) => ({
+export default defineConfig({
   plugins: [
+    tanstackRouter({
+      target: "react",
+      autoCodeSplitting: true,
+    }),
     react(),
     tailwindcss(),
     paraglideVitePlugin({
@@ -15,16 +20,4 @@ export default defineConfig(({ mode }) => ({
       emitTsDeclarations: false,
     }),
   ],
-  server:
-    mode === "development"
-      ? {
-          proxy: {
-            "/status.json": {
-              target: "https://valheim.flcloud.ovh",
-              changeOrigin: true,
-              secure: true,
-            },
-          },
-        }
-      : undefined,
-}));
+});
