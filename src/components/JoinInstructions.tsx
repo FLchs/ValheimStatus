@@ -1,9 +1,12 @@
+import { useConfig } from "../context/ConfigContext";
 import { useServerStatus } from "../hooks/useServerStatus";
 import { m } from "../i18n/messages";
 
 const JoinInstructions = () => {
   const { data } = useServerStatus();
   if (!data) return null;
+
+  const { serverDomain } = useConfig();
 
   return (
     <div className="mt-6 p-4 bg-stone-900/60 border border-stone-700/50 rounded-lg">
@@ -17,7 +20,7 @@ const JoinInstructions = () => {
         <li>
           {m.join_step_4()}{" "}
           <span className="text-amber-400 font-bold tracking-wider font-mono">
-            valheim.flcloud.ovh:{data.port}
+            {serverDomain}:{data.port}
           </span>
         </li>
         <li>{m.join_step_5()}</li>
