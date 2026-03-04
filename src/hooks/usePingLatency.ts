@@ -29,12 +29,12 @@ const measurePing = async (domain: string, signal: AbortSignal): Promise<PingRes
   }
 };
 
-export const usePingLatency = () => {
+export const usePingLatency = (refreshInterval: number = PING_INTERVAL) => {
   const { apiDomain } = useConfig();
   const { data } = useQuery({
     queryKey: ["ping"],
     queryFn: ({ signal }) => measurePing(apiDomain, signal),
-    refetchInterval: PING_INTERVAL,
+    refetchInterval: refreshInterval,
     retry: false,
     staleTime: Infinity,
   });
