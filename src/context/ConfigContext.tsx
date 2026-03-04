@@ -13,7 +13,9 @@ export function ConfigProvider({
   serverDomain,
 }: Config & { children: ReactNode }) {
   return (
-    <ConfigContext.Provider value={{ apiDomain, serverDomain }}>{children}</ConfigContext.Provider>
+    <ConfigContext.Provider value={{ apiDomain, serverDomain: serverDomain ?? apiDomain }}>
+      {children}
+    </ConfigContext.Provider>
   );
 }
 
