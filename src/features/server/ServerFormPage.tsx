@@ -1,8 +1,6 @@
-import { useState } from 'react'
 import { useForm } from '@tanstack/react-form'
 import { useNavigate } from '@tanstack/react-router'
 import TextField from '../../components/form/TextField'
-import ApiDomainField from '../../components/form/ApiDomainField'
 import { SubmitButton } from '../../components/form/SubmitButton'
 import LanguageSwitcher from '../../components/LanguageSwitcher'
 import { testApi } from './serverForm'
@@ -10,7 +8,6 @@ import { m } from '../../i18n/messages'
 
 export function ServerFormPage() {
   const navigate = useNavigate()
-  const [submitError, setSubmitError] = useState<string | null>(null)
 
   const form = useForm({
     defaultValues: {
@@ -18,15 +15,6 @@ export function ServerFormPage() {
       serverAddress: '',
     },
     onSubmit: async ({ value }) => {
-      setSubmitError(null)
-      
-      // Validate API is reachable before navigating
-      const isReachable = await testApi(value.apiAddress)
-      if (!isReachable) {
-        setSubmitError(m.form_error_unreachable({ domain: value.apiAddress }))
-        return
-      }
-      
       const encodedApi = encodeURIComponent(value.apiAddress)
       const encodedServer = encodeURIComponent(value.serverAddress)
       await navigate({ to: `/s/${encodedApi}/${encodedServer}` })
@@ -55,19 +43,21 @@ export function ServerFormPage() {
               <form.Field
                 name="apiAddress"
                 validators={{
-                  onChange: ({ value }) => {
-                    if (!value || value.trim() === '') {
-                      return 'API address is required'
-                    }
+                  onChange: ({ value }) =>
+                    !value || value.trim() === '' ? m.form_error_required() : undefined,
+                  onSubmitAsync: async ({ value }) => {
+                    const isReachable = await testApi(value)
+                    return !isReachable ? m.form_error_unreachable({ domain: value }) : undefined
                   },
                 }}
               >
                 {(field) => (
-                  <ApiDomainField
+                  <TextField
                     field={field}
                     label={m.form_api_domain_label()}
                     placeholder={m.form_api_domain_placeholder()}
                     helpText={m.form_api_domain_help()}
+                    showValidationIndicator
                   />
                 )}
               </form.Field>
@@ -83,13 +73,6 @@ export function ServerFormPage() {
                   />
                 )}
               </form.Field>
-
-              {/* Submit Error Message */}
-              {submitError && (
-                <div className="p-3 bg-red-900/30 border border-red-700/50 rounded-lg">
-                  <p className="text-sm text-red-300">{submitError}</p>
-                </div>
-              )}
 
               {/* Single CTA Button */}
               <form.Subscribe
