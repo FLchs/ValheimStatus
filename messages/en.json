@@ -37,5 +37,15 @@
   "error_server_message": "The server {serverName} has encountered a sinister presence",
   "switch_language": "Switch to French",
   "language_en": "English",
-  "language_fr": "French"
+  "language_fr": "French",
+  "form_api_domain_label": "API Domain",
+  "form_api_domain_placeholder": "example.com",
+  "form_api_domain_help": "The domain where status.json is hosted",
+  "form_server_address_label": "Server Address",
+  "form_server_address_placeholder": "server.example.com",
+  "form_server_address_help": "Optional - Domain or IP to connect to the server",
+  "form_button_test": "Test Connection",
+  "form_button_testing": "Testing...",
+  "form_button_save": "View Status",
+  "form_footer_text": "The URL will be your unique source of truth"
 }

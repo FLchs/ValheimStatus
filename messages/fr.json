@@ -37,5 +37,15 @@
   "error_server_message": "Le serveur {serverName} a rencontré une présence sinistre",
   "switch_language": "Passer en anglais",
   "language_en": "Anglais",
-  "language_fr": "Français"
+  "language_fr": "Français",
+  "form_api_domain_label": "Domaine API",
+  "form_api_domain_placeholder": "example.com",
+  "form_api_domain_help": "Le domaine où status.json est hébergé",
+  "form_server_address_label": "Adresse du Serveur",
+  "form_server_address_placeholder": "serveur.example.com",
+  "form_server_address_help": "Optionnel - Domaine ou IP pour se connecter au serveur",
+  "form_button_test": "Tester la Connexion",
+  "form_button_testing": "Test en cours...",
+  "form_button_save": "Voir l'État",
+  "form_footer_text": "L'URL sera votre unique source de vérité"
 }
