@@ -47,10 +47,7 @@ const options = {
 };
 
 const PingGraph = () => {
-  const { latencyData } = usePingLatency();
-
-  const currentLatency =
-    latencyData.length > 0 ? latencyData[latencyData.length - 1].latency : null;
+  const { latencyData, latestLatency: currentLatency } = usePingLatency();
 
   const locale = getLocale();
   const timeLocale = locale === "fr" ? "fr-FR" : "en-US";
