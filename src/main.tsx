@@ -7,15 +7,18 @@ import { LocaleProvider } from "./i18n/LocaleContext.tsx";
 import { ReactQueryDevtoolsPanel } from "@tanstack/react-query-devtools";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { TanStackDevtools } from "@tanstack/react-devtools";
-import { createRouter, RouterProvider } from "@tanstack/react-router";
+import { createHashHistory, createRouter, RouterProvider } from "@tanstack/react-router";
 import { routeTree } from "./routeTree.gen";
 
 const queryClient = new QueryClient();
 
+// Create hash history for GitHub Pages compatibility
+const hashHistory = createHashHistory();
+
 // Set up a Router instance
 const router = createRouter({
   routeTree,
-  basepath: "/ValheimStatus",
+  history: hashHistory,
   defaultPreload: "intent",
   scrollRestoration: true,
 });
