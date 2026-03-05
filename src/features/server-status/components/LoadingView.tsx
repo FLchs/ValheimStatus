@@ -2,7 +2,7 @@ import { m } from "#/i18n/messages";
 
 export function LoadingView() {
   return (
-    <div className="min-h-screen flex items-center justify-center">
+    <div className="flex items-center justify-center py-20">
       <div className="text-center">
         <div className="text-6xl mb-4">⚔️</div>
         <h1 className="text-2xl text-amber-400 font-bold tracking-wider">
