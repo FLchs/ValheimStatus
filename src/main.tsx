@@ -15,6 +15,7 @@ const queryClient = new QueryClient();
 // Set up a Router instance
 const router = createRouter({
   routeTree,
+  basepath: "/ValheimStatus",
   defaultPreload: "intent",
   scrollRestoration: true,
 });
