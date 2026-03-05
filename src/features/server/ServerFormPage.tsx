@@ -6,6 +6,7 @@ import LanguageSwitcher from "../../components/LanguageSwitcher";
 import { testApi } from "./serverForm";
 import { m } from "../../i18n/messages";
 import { Route } from "../../routes/_localized/index";
+import { normalizeApiDomain } from "../../context/ConfigContext";
 
 export function ServerFormPage() {
   const navigate = useNavigate();
@@ -17,7 +18,9 @@ export function ServerFormPage() {
       serverAddress: server ?? "",
     },
     onSubmit: async ({ value }) => {
-      const encodedApi = encodeURIComponent(value.apiAddress);
+      // Normalize: remove https:// and /status.json for param storage
+      const normalizedApi = normalizeApiDomain(value.apiAddress);
+      const encodedApi = encodeURIComponent(normalizedApi);
       const encodedServer = encodeURIComponent(value.serverAddress);
       await navigate({ to: `/s/${encodedApi}/${encodedServer}` });
     },
@@ -44,8 +47,17 @@ export function ServerFormPage() {
           <form.Field
             name="apiAddress"
             validators={{
-              onChange: ({ value }) =>
-                !value || value.trim() === "" ? m.form_error_required() : undefined,
+              onChange: ({ value }) => {
+                if (!value || value.trim() === "") {
+                  return m.form_error_required();
+                }
+                try {
+                  new URL(value);
+                } catch {
+                  return m.form_error_invalid_url();
+                }
+                return undefined;
+              },
               onSubmitAsync: async ({ value }) => {
                 const isReachable = await testApi(value);
                 return !isReachable ? m.form_error_unreachable({ domain: value }) : undefined;
