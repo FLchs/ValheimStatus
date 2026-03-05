@@ -1,7 +1,7 @@
 import { m } from "../i18n/messages";
 import { useLocale } from "../i18n/LocaleContext";
 
-const LanguageSwitcher = () => {
+export function LanguageSwitcher() {
   const { locale: currentLocale, setLocale } = useLocale();
 
   const handleSwitch = (locale: "en" | "fr") => {
@@ -38,6 +38,4 @@ const LanguageSwitcher = () => {
       </button>
     </div>
   );
-};
-
-export default LanguageSwitcher;
+}

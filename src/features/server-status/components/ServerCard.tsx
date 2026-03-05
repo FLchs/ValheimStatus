@@ -1,16 +1,16 @@
 import { useServerStatus } from "../hooks/useServerStatus";
-import ErrorBanner from "./ErrorBanner";
-import JoinInstructions from "./JoinInstructions";
-import LoadingView from "./LoadingView";
-import PingGraph from "./PingGraph";
-import ServerAddress from "./ServerAddress";
-import ServerDetailsGrid from "./ServerDetailsGrid";
-import ServerFooter from "./ServerFooter";
-import ServerHeader from "./ServerHeader";
-import ServerName from "./ServerName";
-import ServerStatusGrid from "./ServerStatusGrid";
+import { ErrorBanner } from "./ErrorBanner";
+import { JoinInstructions } from "./JoinInstructions";
+import { LoadingView } from "./LoadingView";
+import { PingGraph } from "./PingGraph";
+import { ServerAddress } from "./ServerAddress";
+import { ServerDetailsGrid } from "./ServerDetailsGrid";
+import { ServerFooter } from "./ServerFooter";
+import { ServerHeader } from "./ServerHeader";
+import { ServerName } from "./ServerName";
+import { ServerStatusGrid } from "./ServerStatusGrid";
 
-const ServerCard = () => {
+export function ServerCard() {
   const { data: serverData, isLoading: isStatusLoading } = useServerStatus();
 
   const isLoading = isStatusLoading;
@@ -41,6 +41,4 @@ const ServerCard = () => {
       </div>
     </div>
   );
-};
-
-export default ServerCard;
+}

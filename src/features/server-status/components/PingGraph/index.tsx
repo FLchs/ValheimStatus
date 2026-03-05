@@ -13,7 +13,7 @@ import StreamingPlugin, { RealTimeScale } from "@aziham/chartjs-plugin-streaming
 import "chartjs-adapter-date-fns";
 import { useMemo, useRef } from "react";
 import { usePingLatency } from "../../hooks/usePingLatency";
-import { m } from "../../i18n/messages";
+import { m } from "../../../../i18n/messages";
 import { COLORS, STREAMING_DURATION, Y_AXIS_MAX, DEFAULT_REFRESH_INTERVAL } from "./constants";
 import { getLatencyColor, getCurrentLatencyColor } from "./utils";
 
@@ -26,11 +26,11 @@ ChartJS.register(
   RealTimeScale,
 );
 
-const PingGraph = ({
+export function PingGraph({
   refreshInterval = DEFAULT_REFRESH_INTERVAL,
 }: {
   refreshInterval?: number;
-}) => {
+}) {
   const { latestLatency } = usePingLatency(refreshInterval);
   const latencyRef = useRef(latestLatency);
   latencyRef.current = latestLatency;
@@ -145,6 +145,4 @@ const PingGraph = ({
       </div>
     </div>
   );
-};
-
-export default PingGraph;
+}

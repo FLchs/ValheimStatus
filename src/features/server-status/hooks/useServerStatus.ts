@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { ServerStatusSchema, type ServerStatus } from "../types";
-import { useConfig, buildStatusUrl } from "../context/ConfigContext";
+import { ServerStatusSchema, type ServerStatus } from "../../lib/types";
+import { useConfig, buildStatusUrl } from "./ConfigContext";
 
 const fetchServerStatus = async (domain: string): Promise<ServerStatus> => {
   const url = buildStatusUrl(domain);

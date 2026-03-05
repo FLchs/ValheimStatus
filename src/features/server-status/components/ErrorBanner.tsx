@@ -1,7 +1,7 @@
 import { useServerStatus } from "../hooks/useServerStatus";
-import { m } from "../i18n/messages";
+import { m } from "../../../i18n/messages";
 
-const ErrorBanner = () => {
+export function ErrorBanner() {
   const { data, isLoading } = useServerStatus();
 
   if (isLoading || !data || data.error == null) {
@@ -23,6 +23,4 @@ const ErrorBanner = () => {
       </div>
     </div>
   );
-};
-
-export default ErrorBanner;
+}

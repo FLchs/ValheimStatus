@@ -1,8 +1,8 @@
-import { useConfig } from "../context/ConfigContext";
+import { useConfig } from "../ConfigContext";
 import { useServerStatus } from "../hooks/useServerStatus";
-import { m } from "../i18n/messages";
+import { m } from "../../../i18n/messages";
 
-const JoinInstructions = () => {
+export function JoinInstructions() {
   const { data } = useServerStatus();
   if (!data) return null;
 
@@ -46,6 +46,4 @@ const JoinInstructions = () => {
       </ol>
     </div>
   );
-};
-
-export default JoinInstructions;
+}

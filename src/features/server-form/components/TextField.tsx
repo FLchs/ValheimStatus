@@ -10,7 +10,7 @@ interface TextFieldProps {
   showValidationIndicator?: boolean
 }
 
-export default function TextField({
+export function TextField({
   field,
   label,
   placeholder,

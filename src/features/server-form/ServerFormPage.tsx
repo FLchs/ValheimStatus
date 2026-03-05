@@ -1,12 +1,12 @@
 import { useForm } from "@tanstack/react-form";
 import { useNavigate } from "@tanstack/react-router";
-import TextField from "../../components/form/TextField";
-import { SubmitButton } from "../../components/form/SubmitButton";
-import LanguageSwitcher from "../../components/LanguageSwitcher";
-import { testApi } from "./serverForm";
+import { TextField } from "./components/TextField";
+import { SubmitButton } from "./components/SubmitButton";
+import { LanguageSwitcher } from "../../components/LanguageSwitcher";
+import { testApi } from "./api";
 import { m } from "../../i18n/messages";
 import { Route } from "../../routes/_localized/index";
-import { normalizeApiDomain } from "../../context/ConfigContext";
+import { normalizeApiDomain } from "../../features/server-status/ConfigContext";
 
 export function ServerFormPage() {
   const navigate = useNavigate();

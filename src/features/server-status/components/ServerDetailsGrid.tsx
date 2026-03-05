@@ -1,7 +1,7 @@
 import { useServerStatus } from "../hooks/useServerStatus";
-import { m } from "../i18n/messages";
+import { m } from "../../../i18n/messages";
 
-const ServerDetailsGrid = () => {
+export function ServerDetailsGrid() {
   const { data } = useServerStatus();
   if (!data) return null;
 
@@ -29,6 +29,4 @@ const ServerDetailsGrid = () => {
       </div>
     </div>
   );
-};
-
-export default ServerDetailsGrid;
+}

@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { z } from 'zod'
-import { ServerFormPage } from '../../features/server/ServerFormPage'
+import { ServerFormPage } from '../../features/server-form'
 import { useLocale } from '../../i18n/LocaleContext'
 
 const searchSchema = z.object({

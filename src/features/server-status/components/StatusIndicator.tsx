@@ -1,7 +1,7 @@
 import { useServerStatus } from "../hooks/useServerStatus";
-import { m } from "../i18n/messages";
+import { m } from "../../../i18n/messages";
 
-const StatusIndicator = () => {
+export function StatusIndicator() {
   const { data, isLoading } = useServerStatus();
   const hasError = isLoading || !data ? false : data.error != null;
 
@@ -21,6 +21,4 @@ const StatusIndicator = () => {
       </span>
     </div>
   );
-};
-
-export default StatusIndicator;
+}

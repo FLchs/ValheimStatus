@@ -1,8 +1,8 @@
 import { useNavigate, useParams } from "@tanstack/react-router";
 import { useServerStatus } from "../hooks/useServerStatus";
-import { m } from "../i18n/messages";
+import { m } from "../../../i18n/messages";
 
-const ServerName = () => {
+export function ServerName() {
   const { data } = useServerStatus();
   const navigate = useNavigate();
   const { apiDomain, serverDomain } = useParams({ from: "/_localized/s/$apiDomain/{-$serverDomain}" });
@@ -44,6 +44,4 @@ const ServerName = () => {
       </button>
     </div>
   );
-};
-
-export default ServerName;
+}

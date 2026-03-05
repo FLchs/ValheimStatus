@@ -1,8 +1,8 @@
 import { useServerStatus } from "../hooks/useServerStatus";
-import StatusIndicator from "./StatusIndicator";
-import { m } from "../i18n/messages";
+import { StatusIndicator } from "./StatusIndicator";
+import { m } from "../../../i18n/messages";
 
-const ServerStatusGrid = () => {
+export function ServerStatusGrid() {
   const { data } = useServerStatus();
   if (!data) return null;
 
@@ -27,6 +27,4 @@ const ServerStatusGrid = () => {
       </div>
     </div>
   );
-};
-
-export default ServerStatusGrid;
+}

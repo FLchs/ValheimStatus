@@ -1,8 +1,8 @@
-import { useConfig } from "../context/ConfigContext";
+import { useConfig } from "../ConfigContext";
 import { useServerStatus } from "../hooks/useServerStatus";
-import { m } from "../i18n/messages";
+import { m } from "../../../i18n/messages";
 
-function ServerAddress() {
+export function ServerAddress() {
   const { serverDomain } = useConfig();
   const { data } = useServerStatus();
   return (
@@ -14,5 +14,3 @@ function ServerAddress() {
     </div>
   );
 }
-
-export default ServerAddress;
