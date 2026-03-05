@@ -27,6 +27,10 @@ const JoinInstructions = () => {
         </a>
       </div>
 
+      <div className="text-center mb-3">
+        <span className="text-parchment/60 text-sm italic">{m.join_or_manual()}</span>
+      </div>
+
       <ol className="text-parchment/80 text-sm space-y-2 list-decimal list-inside">
         <li>{m.join_step_1()}</li>
         <li>{m.join_step_2()}</li>
