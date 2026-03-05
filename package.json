@@ -35,7 +35,6 @@
     "@tanstack/react-query-devtools": "^5.91.3",
     "@tanstack/react-router-devtools": "^1.163.3",
     "@tanstack/router-plugin": "^1.164.0",
-    "@types/node": "^25.3.3",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react": "^4.4.1",

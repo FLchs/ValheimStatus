@@ -3,13 +3,12 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { paraglideVitePlugin } from "@inlang/paraglide-js";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
-import path from "path";
 
 // https://vite.dev/config/
 export default defineConfig({
   resolve: {
     alias: {
-      "#": path.resolve(process.cwd(), "./src"),
+      "#": new URL("./src", import.meta.url).pathname,
     },
   },
   plugins: [
