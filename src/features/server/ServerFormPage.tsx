@@ -91,10 +91,10 @@ export function ServerFormPage() {
 
           {/* Footer hint */}
           <p className="text-xs text-parchment/40 text-center pt-2">{m.form_footer_text()}</p>
-        </form>
 
-        {/* Language Switcher */}
-        <LanguageSwitcher />
+          {/* Language Switcher */}
+          <LanguageSwitcher />
+        </form>
       </div>
     </div>
   );
