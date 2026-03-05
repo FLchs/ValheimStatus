@@ -11,14 +11,17 @@ const LocaleContext = createContext<LocaleContextType | undefined>(undefined);
 export function LocaleProvider({ children }: { children: ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>(getLocale());
 
-  const handleSetLocale = useCallback((newLocale: Locale) => {
-    if (newLocale !== locale) {
-      // Update localStorage without reloading the page
-      setLocale(newLocale, { reload: false });
-      // Update React state to trigger re-render
-      setLocaleState(newLocale);
-    }
-  }, [locale]);
+  const handleSetLocale = useCallback(
+    (newLocale: Locale) => {
+      if (newLocale !== locale) {
+        // Update localStorage without reloading the page
+        setLocale(newLocale, { reload: false });
+        // Update React state to trigger re-render
+        setLocaleState(newLocale);
+      }
+    },
+    [locale],
+  );
 
   return (
     <LocaleContext.Provider value={{ locale, setLocale: handleSetLocale }}>

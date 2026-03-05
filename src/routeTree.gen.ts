@@ -9,70 +9,99 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as SApiDomainChar123ServerDomainChar125RouteImport } from './routes/s/$apiDomain/{-$serverDomain}'
+import { Route as LocalizedRouteImport } from './routes/_localized'
+import { Route as LocalizedIndexRouteImport } from './routes/_localized/index'
+import { Route as LocalizedSApiDomainChar123ServerDomainChar125RouteImport } from './routes/_localized/s/$apiDomain/{-$serverDomain}'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const LocalizedRoute = LocalizedRouteImport.update({
+  id: '/_localized',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SApiDomainChar123ServerDomainChar125Route =
-  SApiDomainChar123ServerDomainChar125RouteImport.update({
+const LocalizedIndexRoute = LocalizedIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => LocalizedRoute,
+} as any)
+const LocalizedSApiDomainChar123ServerDomainChar125Route =
+  LocalizedSApiDomainChar123ServerDomainChar125RouteImport.update({
     id: '/s/$apiDomain/{-$serverDomain}',
     path: '/s/$apiDomain/{-$serverDomain}',
-    getParentRoute: () => rootRouteImport,
+    getParentRoute: () => LocalizedRoute,
   } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/s/$apiDomain/{-$serverDomain}': typeof SApiDomainChar123ServerDomainChar125Route
+  '/': typeof LocalizedIndexRoute
+  '/s/$apiDomain/{-$serverDomain}': typeof LocalizedSApiDomainChar123ServerDomainChar125Route
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/s/$apiDomain/{-$serverDomain}': typeof SApiDomainChar123ServerDomainChar125Route
+  '/': typeof LocalizedIndexRoute
+  '/s/$apiDomain/{-$serverDomain}': typeof LocalizedSApiDomainChar123ServerDomainChar125Route
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/s/$apiDomain/{-$serverDomain}': typeof SApiDomainChar123ServerDomainChar125Route
+  '/_localized': typeof LocalizedRouteWithChildren
+  '/_localized/': typeof LocalizedIndexRoute
+  '/_localized/s/$apiDomain/{-$serverDomain}': typeof LocalizedSApiDomainChar123ServerDomainChar125Route
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths: '/' | '/s/$apiDomain/{-$serverDomain}'
   fileRoutesByTo: FileRoutesByTo
   to: '/' | '/s/$apiDomain/{-$serverDomain}'
-  id: '__root__' | '/' | '/s/$apiDomain/{-$serverDomain}'
+  id:
+    | '__root__'
+    | '/_localized'
+    | '/_localized/'
+    | '/_localized/s/$apiDomain/{-$serverDomain}'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  SApiDomainChar123ServerDomainChar125Route: typeof SApiDomainChar123ServerDomainChar125Route
+  LocalizedRoute: typeof LocalizedRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
+    '/_localized': {
+      id: '/_localized'
+      path: ''
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+      preLoaderRoute: typeof LocalizedRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/s/$apiDomain/{-$serverDomain}': {
-      id: '/s/$apiDomain/{-$serverDomain}'
+    '/_localized/': {
+      id: '/_localized/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof LocalizedIndexRouteImport
+      parentRoute: typeof LocalizedRoute
+    }
+    '/_localized/s/$apiDomain/{-$serverDomain}': {
+      id: '/_localized/s/$apiDomain/{-$serverDomain}'
       path: '/s/$apiDomain/{-$serverDomain}'
       fullPath: '/s/$apiDomain/{-$serverDomain}'
-      preLoaderRoute: typeof SApiDomainChar123ServerDomainChar125RouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof LocalizedSApiDomainChar123ServerDomainChar125RouteImport
+      parentRoute: typeof LocalizedRoute
     }
   }
 }
 
+interface LocalizedRouteChildren {
+  LocalizedIndexRoute: typeof LocalizedIndexRoute
+  LocalizedSApiDomainChar123ServerDomainChar125Route: typeof LocalizedSApiDomainChar123ServerDomainChar125Route
+}
+
+const LocalizedRouteChildren: LocalizedRouteChildren = {
+  LocalizedIndexRoute: LocalizedIndexRoute,
+  LocalizedSApiDomainChar123ServerDomainChar125Route:
+    LocalizedSApiDomainChar123ServerDomainChar125Route,
+}
+
+const LocalizedRouteWithChildren = LocalizedRoute._addFileChildren(
+  LocalizedRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  SApiDomainChar123ServerDomainChar125Route:
-    SApiDomainChar123ServerDomainChar125Route,
+  LocalizedRoute: LocalizedRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
