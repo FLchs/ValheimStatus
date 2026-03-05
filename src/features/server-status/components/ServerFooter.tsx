@@ -1,5 +1,5 @@
-import { m } from "../../../i18n/messages";
-import { LanguageSwitcher } from "../../../components/LanguageSwitcher";
+import { m } from "#/i18n/messages";
+import { LanguageSwitcher } from "#/components/LanguageSwitcher";
 
 export function ServerFooter() {
   return (

@@ -1,6 +1,6 @@
-import { useConfig } from "../ConfigContext";
-import { useServerStatus } from "../hooks/useServerStatus";
-import { m } from "../../../i18n/messages";
+import { useConfig } from "#/features/server-status/ConfigContext";
+import { useServerStatus } from "#/features/server-status/hooks/useServerStatus";
+import { m } from "#/i18n/messages";
 
 export function ServerAddress() {
   const { serverDomain } = useConfig();

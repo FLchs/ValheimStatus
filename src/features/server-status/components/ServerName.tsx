@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "@tanstack/react-router";
-import { useServerStatus } from "../hooks/useServerStatus";
-import { m } from "../../../i18n/messages";
+import { useServerStatus } from "#/features/server-status/hooks/useServerStatus";
+import { m } from "#/i18n/messages";
 
 export function ServerName() {
   const { data } = useServerStatus();

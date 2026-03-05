@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useCallback, type ReactNode } from "react";
-import { setLocale, getLocale, type Locale } from "../i18n/runtime";
+import { setLocale, getLocale, type Locale } from "#/i18n/runtime";
 
 type LocaleContextType = {
   locale: Locale;

@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { ConfigProvider, ServerCard } from "../../../../features/server-status";
-import { useLocale } from "../../../../i18n/LocaleContext";
+import { ConfigProvider, ServerCard } from "#/features/server-status";
+import { useLocale } from "#/i18n/LocaleContext";
 
 export const Route = createFileRoute("/_localized/s/$apiDomain/{-$serverDomain}")({
   component: RouteComponent,

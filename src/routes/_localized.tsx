@@ -1,6 +1,6 @@
 import { Outlet, createFileRoute } from "@tanstack/react-router";
-import { useLocale } from "../i18n/LocaleContext";
-import { m } from "../i18n/messages";
+import { useLocale } from "#/i18n/LocaleContext";
+import { m } from "#/i18n/messages";
 import { useEffect } from "react";
 
 export const Route = createFileRoute("/_localized")({

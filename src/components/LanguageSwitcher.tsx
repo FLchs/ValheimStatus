@@ -1,5 +1,5 @@
-import { m } from "../i18n/messages";
-import { useLocale } from "../i18n/LocaleContext";
+import { m } from "#/i18n/messages";
+import { useLocale } from "#/i18n/LocaleContext";
 
 export function LanguageSwitcher() {
   const { locale: currentLocale, setLocale } = useLocale();

@@ -12,8 +12,8 @@ import {
 import StreamingPlugin, { RealTimeScale } from "@aziham/chartjs-plugin-streaming";
 import "chartjs-adapter-date-fns";
 import { useMemo, useRef } from "react";
-import { usePingLatency } from "../../hooks/usePingLatency";
-import { m } from "../../../../i18n/messages";
+import { usePingLatency } from "#/features/server-status/hooks/usePingLatency";
+import { m } from "#/i18n/messages";
 import { COLORS, STREAMING_DURATION, Y_AXIS_MAX, DEFAULT_REFRESH_INTERVAL } from "./constants";
 import { getLatencyColor, getCurrentLatencyColor } from "./utils";
 

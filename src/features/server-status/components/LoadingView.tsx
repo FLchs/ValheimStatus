@@ -1,4 +1,4 @@
-import { m } from "../../../i18n/messages";
+import { m } from "#/i18n/messages";
 
 export function LoadingView() {
   return (

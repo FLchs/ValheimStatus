@@ -1,14 +1,14 @@
-import { useServerStatus } from "../hooks/useServerStatus";
-import { ErrorBanner } from "./ErrorBanner";
-import { JoinInstructions } from "./JoinInstructions";
-import { LoadingView } from "./LoadingView";
-import { PingGraph } from "./PingGraph";
-import { ServerAddress } from "./ServerAddress";
-import { ServerDetailsGrid } from "./ServerDetailsGrid";
-import { ServerFooter } from "./ServerFooter";
-import { ServerHeader } from "./ServerHeader";
-import { ServerName } from "./ServerName";
-import { ServerStatusGrid } from "./ServerStatusGrid";
+import { useServerStatus } from "#/features/server-status/hooks/useServerStatus";
+import { ErrorBanner } from "#/features/server-status/components/ErrorBanner";
+import { JoinInstructions } from "#/features/server-status/components/JoinInstructions";
+import { LoadingView } from "#/features/server-status/components/LoadingView";
+import { PingGraph } from "#/features/server-status/components/PingGraph";
+import { ServerAddress } from "#/features/server-status/components/ServerAddress";
+import { ServerDetailsGrid } from "#/features/server-status/components/ServerDetailsGrid";
+import { ServerFooter } from "#/features/server-status/components/ServerFooter";
+import { ServerHeader } from "#/features/server-status/components/ServerHeader";
+import { ServerName } from "#/features/server-status/components/ServerName";
+import { ServerStatusGrid } from "#/features/server-status/components/ServerStatusGrid";
 
 export function ServerCard() {
   const { data: serverData, isLoading: isStatusLoading } = useServerStatus();

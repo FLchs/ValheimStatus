@@ -1,5 +1,5 @@
-import { useServerStatus } from "../hooks/useServerStatus";
-import { m } from "../../../i18n/messages";
+import { useServerStatus } from "#/features/server-status/hooks/useServerStatus";
+import { m } from "#/i18n/messages";
 
 export function StatusIndicator() {
   const { data, isLoading } = useServerStatus();

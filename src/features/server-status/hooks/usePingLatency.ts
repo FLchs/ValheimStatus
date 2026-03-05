@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useConfig, buildStatusUrl } from "../ConfigContext";
+import { useConfig, buildStatusUrl } from "#/features/server-status/ConfigContext";
 
 const PING_INTERVAL = 1000;
 
