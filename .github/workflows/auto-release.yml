@@ -6,48 +6,102 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   release:
     runs-on: ubuntu-latest
+    outputs:
+      skipped: ${{ steps.changelog.outputs.skipped }}
+      tag: ${{ steps.changelog.outputs.tag }}
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      
-      - name: Generate release tag
-        id: tag
-        run: |
-          VERSION=$(date +'%Y.%m.%d')-$(git rev-parse --short HEAD)
-          echo "tag=v$VERSION" >> $GITHUB_OUTPUT
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-      
-      - name: Check if release exists
-        id: check_release
-        run: |
-          TAG="${{ steps.tag.outputs.tag }}"
-          if gh release view "$TAG" &>/dev/null; then
-            echo "exists=true" >> $GITHUB_OUTPUT
-          else
-            echo "exists=false" >> $GITHUB_OUTPUT
-          fi
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
-      - name: Create Release
-        if: steps.check_release.outputs.exists == 'false'
-        uses: softprops/action-gh-release@v1
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Conventional Changelog Action
+        id: changelog
+        uses: TriPSs/conventional-changelog-action@v5
         with:
-          tag_name: ${{ steps.tag.outputs.tag }}
-          name: Release ${{ steps.tag.outputs.version }}
-          body: |
-            Automated release created on push to master
-            
-            **Changes in this release:**
-            ${{ github.event.head_commit.message }}
-            
-            **Commit:** ${{ github.sha }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          version-file: "package.json"
+          output-file: "CHANGELOG.md"
+          skip-version-file: false
+          skip-commit: false
+          skip-tag: false
+          git-message: "chore(release): {version}"
+          git-user-name: "github-actions"
+          git-user-email: "github-actions@github.com"
+          preset: angular
+          release-count: 0
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        if: ${{ steps.changelog.outputs.skipped == 'false' }}
+        with:
+          tag_name: ${{ steps.changelog.outputs.tag }}
+          name: ${{ steps.changelog.outputs.tag }}
+          body: ${{ steps.changelog.outputs.clean_changelog }}
           draft: false
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  build:
+    needs: release
+    if: ${{ needs.release.outputs.skipped == 'false' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+      - name: Create .env file
+        run: |
+          echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" >> .env
+          echo "VITE_SERVER_ADDRESS=${{ secrets.VITE_SERVER_ADDRESS }}" >> .env
+      - run: bun install
+      - run: bun run build
+      - name: Create dist archive
+        run: zip -r dist.zip dist/
+      - name: Upload to release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: dist.zip
+          tag_name: ${{ needs.release.outputs.tag }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+          retention-days: 90
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload to GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
