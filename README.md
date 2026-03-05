@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/FLchs/ValheimStatus/actions/workflows/ci.yml/badge.svg)](https://github.com/FLchs/ValheimStatus/actions/workflows/ci.yml)
 [![Build & Release](https://github.com/FLchs/ValheimStatus/actions/workflows/build.yml/badge.svg)](https://github.com/FLchs/ValheimStatus/actions/workflows/build.yml)
-[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen?logo=github)](https://flchs.github.io/ValheimStatus/)
+[![Live Site](https://img.shields.io/badge/Live%20Site-vhstatus.ovh-brightgreen)](https://vhstatus.ovh)
 
 A beautiful, real-time status page for your Valheim game server. Keep your community informed about server availability, player count, and connection quality.
 
@@ -30,7 +30,7 @@ Simply enter your server's API endpoint to get started. The page will automatica
 
 ## Demo
 
-Check out the live demo: [https://flchs.github.io/ValheimStatus/](https://flchs.github.io/ValheimStatus/)
+Check out the live demo: [https://vhstatus.ovh](https://vhstatus.ovh)
 
 ## License
 

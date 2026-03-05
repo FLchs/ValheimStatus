@@ -6,7 +6,7 @@ import { tanstackRouter } from "@tanstack/router-plugin/vite";
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/ValheimStatus/",
+  base: "/",
   resolve: {
     alias: {
       "#": new URL("./src", import.meta.url).pathname,
