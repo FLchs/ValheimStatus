@@ -32,12 +32,9 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           version-file: "package.json"
           output-file: "CHANGELOG.md"
-          skip-version-file: false
-          skip-commit: false
+          skip-version-file: true
+          skip-commit: true
           skip-tag: false
-          git-message: "chore(release): {version}"
-          git-user-name: "github-actions"
-          git-user-email: "github-actions@github.com"
           preset: angular
           release-count: 0
 
