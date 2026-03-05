@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useConfig } from "../context/ConfigContext";
+import { useConfig, buildStatusUrl } from "../context/ConfigContext";
 
 const PING_INTERVAL = 1000;
 
@@ -11,7 +11,8 @@ const measurePing = async (domain: string, signal: AbortSignal): Promise<PingRes
   const startTime = performance.now();
 
   try {
-    const response = await fetch(`https://${domain}/status.json`, { signal, method: "HEAD" });
+    const url = buildStatusUrl(domain);
+    const response = await fetch(url, { signal, method: "HEAD" });
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);

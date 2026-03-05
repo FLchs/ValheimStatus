@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { ServerStatusSchema, type ServerStatus } from "../types";
-import { useConfig } from "../context/ConfigContext";
+import { useConfig, buildStatusUrl } from "../context/ConfigContext";
 
 const fetchServerStatus = async (domain: string): Promise<ServerStatus> => {
-  const response = await fetch(`https://${domain}/status.json`);
+  const url = buildStatusUrl(domain);
+  const response = await fetch(url);
 
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);
