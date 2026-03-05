@@ -48,5 +48,6 @@
   "form_button_submitting": "Génération...",
   "form_error_unreachable": "Impossible d'accéder à https://{domain}/status.json - Vérifiez l'adresse et que HTTPS est activé",
   "form_error_required": "L'adresse API est requise",
-  "form_footer_text": "Marquez la page de résultat pour partager l'état de votre serveur"
+  "form_footer_text": "Marquez la page de résultat pour partager l'état de votre serveur",
+  "change_server_button": "Changer de serveur"
 }

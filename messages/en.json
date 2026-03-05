@@ -48,5 +48,6 @@
   "form_button_submitting": "Creating Page...",
   "form_error_unreachable": "Cannot reach https://{domain}/status.json - Check the address and ensure HTTPS is enabled",
   "form_error_required": "API address is required",
-  "form_footer_text": "Bookmark the result page to share your server status"
+  "form_footer_text": "Bookmark the result page to share your server status",
+  "change_server_button": "Change Server"
 }
