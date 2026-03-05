@@ -3,7 +3,8 @@ export async function testApi(api: string, signal?: AbortSignal) {
     const controller = new AbortController()
     const timeoutId = setTimeout(() => controller.abort(), 10000)
     
-    const response = await fetch(`https://${api}/status.json`, {
+    // api is the full URL from form input
+    const response = await fetch(api, {
       method: 'HEAD',
       signal: signal || controller.signal,
     })
