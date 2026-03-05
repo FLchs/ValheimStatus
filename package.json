@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "bun run paraglide && tsc -b && vite build",
+    "paraglide": "paraglide-js compile --project ./.inlang --outdir ./src/paraglide --strategy localStorage preferredLanguage baseLocale",
     "typecheck": "tsc --noEmit",
     "lint": "oxlint .",
     "format": "oxfmt .",

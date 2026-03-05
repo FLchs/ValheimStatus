@@ -15,6 +15,7 @@ jobs:
         with:
           bun-version: latest
       - run: bun install
+      - run: bun run paraglide
       - run: bun run typecheck
 
   lint:
