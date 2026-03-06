@@ -1,3 +1,12 @@
+## [0.3.1](https://github.com/FLchs/ValheimStatus/compare/v0.3.0...v0.3.1) (2026-03-06)
+
+
+### Bug Fixes
+
+* **build:** add @tanstack/devtools-vite plugin to auto-remove devtools from production ([#3](https://github.com/FLchs/ValheimStatus/issues/3)) ([80b289f](https://github.com/FLchs/ValheimStatus/commit/80b289fdd90093960d8eac975fed78e066d80f75))
+
+
+
 # [0.3.0](https://github.com/FLchs/ValheimStatus/compare/v0.2.0...v0.3.0) (2026-03-06)
 
 
