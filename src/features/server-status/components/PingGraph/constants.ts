@@ -1,6 +1,6 @@
 export const LATENCY_THRESHOLDS = {
-  GOOD: 100,
-  MEDIUM: 300,
+  GOOD: 80,
+  MEDIUM: 150,
 } as const;
 
 export const COLORS = {
@@ -12,5 +12,8 @@ export const COLORS = {
 } as const;
 
 export const STREAMING_DURATION = 60000;
-export const Y_AXIS_MAX = 150;
 export const DEFAULT_REFRESH_INTERVAL = 1000;
+
+export const Y_AXIS_MIN_RANGE = 50;
+export const Y_AXIS_ROUNDING = 50;
+export const Y_SCALE_HYSTERESIS = 25;
