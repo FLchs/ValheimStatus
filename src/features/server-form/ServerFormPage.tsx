@@ -22,7 +22,7 @@ export function ServerFormPage() {
       const normalizedApi = normalizeApiDomain(value.apiAddress);
       const encodedApi = encodeURIComponent(normalizedApi);
       const encodedServer = encodeURIComponent(value.serverAddress);
-      await navigate({ to: `/s/${encodedApi}/${encodedServer}` });
+      await navigate({ to: `/${encodedApi}/${encodedServer}` });
     },
   });
 

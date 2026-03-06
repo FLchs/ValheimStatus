@@ -5,7 +5,7 @@ import { m } from "#/i18n/messages";
 export function ServerName() {
   const { data } = useServerStatus();
   const navigate = useNavigate();
-  const { apiDomain, serverDomain } = useParams({ from: "/_localized/s/$apiDomain/{-$serverDomain}" });
+  const { apiDomain, serverDomain } = useParams({ from: "/_localized/$apiDomain/{-$serverDomain}" });
 
   if (!data) return null;
 

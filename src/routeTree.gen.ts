@@ -11,7 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as LocalizedRouteImport } from './routes/_localized'
 import { Route as LocalizedIndexRouteImport } from './routes/_localized/index'
-import { Route as LocalizedSApiDomainChar123ServerDomainChar125RouteImport } from './routes/_localized/s/$apiDomain/{-$serverDomain}'
+import { Route as LocalizedApiDomainChar123ServerDomainChar125RouteImport } from './routes/_localized/$apiDomain/{-$serverDomain}'
 
 const LocalizedRoute = LocalizedRouteImport.update({
   id: '/_localized',
@@ -22,37 +22,37 @@ const LocalizedIndexRoute = LocalizedIndexRouteImport.update({
   path: '/',
   getParentRoute: () => LocalizedRoute,
 } as any)
-const LocalizedSApiDomainChar123ServerDomainChar125Route =
-  LocalizedSApiDomainChar123ServerDomainChar125RouteImport.update({
-    id: '/s/$apiDomain/{-$serverDomain}',
-    path: '/s/$apiDomain/{-$serverDomain}',
+const LocalizedApiDomainChar123ServerDomainChar125Route =
+  LocalizedApiDomainChar123ServerDomainChar125RouteImport.update({
+    id: '/$apiDomain/{-$serverDomain}',
+    path: '/$apiDomain/{-$serverDomain}',
     getParentRoute: () => LocalizedRoute,
   } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof LocalizedIndexRoute
-  '/s/$apiDomain/{-$serverDomain}': typeof LocalizedSApiDomainChar123ServerDomainChar125Route
+  '/$apiDomain/{-$serverDomain}': typeof LocalizedApiDomainChar123ServerDomainChar125Route
 }
 export interface FileRoutesByTo {
   '/': typeof LocalizedIndexRoute
-  '/s/$apiDomain/{-$serverDomain}': typeof LocalizedSApiDomainChar123ServerDomainChar125Route
+  '/$apiDomain/{-$serverDomain}': typeof LocalizedApiDomainChar123ServerDomainChar125Route
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_localized': typeof LocalizedRouteWithChildren
   '/_localized/': typeof LocalizedIndexRoute
-  '/_localized/s/$apiDomain/{-$serverDomain}': typeof LocalizedSApiDomainChar123ServerDomainChar125Route
+  '/_localized/$apiDomain/{-$serverDomain}': typeof LocalizedApiDomainChar123ServerDomainChar125Route
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/s/$apiDomain/{-$serverDomain}'
+  fullPaths: '/' | '/$apiDomain/{-$serverDomain}'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/s/$apiDomain/{-$serverDomain}'
+  to: '/' | '/$apiDomain/{-$serverDomain}'
   id:
     | '__root__'
     | '/_localized'
     | '/_localized/'
-    | '/_localized/s/$apiDomain/{-$serverDomain}'
+    | '/_localized/$apiDomain/{-$serverDomain}'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -75,11 +75,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocalizedIndexRouteImport
       parentRoute: typeof LocalizedRoute
     }
-    '/_localized/s/$apiDomain/{-$serverDomain}': {
-      id: '/_localized/s/$apiDomain/{-$serverDomain}'
-      path: '/s/$apiDomain/{-$serverDomain}'
-      fullPath: '/s/$apiDomain/{-$serverDomain}'
-      preLoaderRoute: typeof LocalizedSApiDomainChar123ServerDomainChar125RouteImport
+    '/_localized/$apiDomain/{-$serverDomain}': {
+      id: '/_localized/$apiDomain/{-$serverDomain}'
+      path: '/$apiDomain/{-$serverDomain}'
+      fullPath: '/$apiDomain/{-$serverDomain}'
+      preLoaderRoute: typeof LocalizedApiDomainChar123ServerDomainChar125RouteImport
       parentRoute: typeof LocalizedRoute
     }
   }
@@ -87,13 +87,13 @@ declare module '@tanstack/react-router' {
 
 interface LocalizedRouteChildren {
   LocalizedIndexRoute: typeof LocalizedIndexRoute
-  LocalizedSApiDomainChar123ServerDomainChar125Route: typeof LocalizedSApiDomainChar123ServerDomainChar125Route
+  LocalizedApiDomainChar123ServerDomainChar125Route: typeof LocalizedApiDomainChar123ServerDomainChar125Route
 }
 
 const LocalizedRouteChildren: LocalizedRouteChildren = {
   LocalizedIndexRoute: LocalizedIndexRoute,
-  LocalizedSApiDomainChar123ServerDomainChar125Route:
-    LocalizedSApiDomainChar123ServerDomainChar125Route,
+  LocalizedApiDomainChar123ServerDomainChar125Route:
+    LocalizedApiDomainChar123ServerDomainChar125Route,
 }
 
 const LocalizedRouteWithChildren = LocalizedRoute._addFileChildren(
