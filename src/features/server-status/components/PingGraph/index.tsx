@@ -67,7 +67,8 @@ export function PingGraph({
           data: [],
           borderColor: COLORS.BORDER,
           segment: {
-            borderColor: (ctx) => getLatencyColor(ctx.p1.parsed.y),
+            borderColor: (ctx) =>
+              ctx.p1.x - ctx.p0.x < 10 ? getLatencyColor(ctx.p1.parsed.y) : undefined,
             borderDash: (ctx) => {
               return ctx.p1.x - ctx.p0.x > 10 ? [6, 6] : undefined;
             },
