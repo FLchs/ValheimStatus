@@ -1,4 +1,13 @@
-# 0.2.0 (2026-03-06)
+# [0.3.0](https://github.com/FLchs/ValheimStatus/compare/v0.2.0...v0.3.0) (2026-03-06)
+
+
+### Features
+
+* add dynamic Y-axis scaling to ping graph with anti-jitter ([#2](https://github.com/FLchs/ValheimStatus/issues/2)) ([c5c0d5b](https://github.com/FLchs/ValheimStatus/commit/c5c0d5bb8648582cecb626c8a6c1ae27644d33ed))
+
+
+
+# [0.2.0](https://github.com/FLchs/ValheimStatus/compare/96a3719f667d08dc99681e969c2b04dd982c7627...v0.2.0) (2026-03-06)
 
 
 ### Bug Fixes
