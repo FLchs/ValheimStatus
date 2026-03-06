@@ -35,6 +35,8 @@ jobs:
           skip-tag: false
           preset: angular
           release-count: 0
+          git-user-name: "Release bot"
+          git-user-email: "bot@release.local"
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
