@@ -1,6 +1,6 @@
 export const LATENCY_THRESHOLDS = {
-  GOOD: 100,
-  MEDIUM: 300,
+  GOOD: 80,
+  MEDIUM: 150,
 } as const;
 
 export const COLORS = {

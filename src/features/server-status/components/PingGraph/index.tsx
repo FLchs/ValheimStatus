@@ -14,7 +14,15 @@ import "chartjs-adapter-date-fns";
 import { useMemo, useRef, useState } from "react";
 import { usePingLatency } from "#/features/server-status/hooks/usePingLatency";
 import { m } from "#/i18n/messages";
-import { COLORS, STREAMING_DURATION, DEFAULT_REFRESH_INTERVAL, Y_AXIS_MIN_RANGE, Y_AXIS_ROUNDING, Y_SCALE_HYSTERESIS } from "./constants";
+import {
+  COLORS,
+  LATENCY_THRESHOLDS,
+  STREAMING_DURATION,
+  DEFAULT_REFRESH_INTERVAL,
+  Y_AXIS_MIN_RANGE,
+  Y_AXIS_ROUNDING,
+  Y_SCALE_HYSTERESIS,
+} from "./constants";
 import { getLatencyColor, getCurrentLatencyColor } from "./utils";
 
 function calculateDynamicYMax(currentMax: number, dataPoints: number[]): number {
@@ -58,13 +66,18 @@ export function PingGraph({
           label: m.network_latency(),
           data: [],
           borderColor: COLORS.BORDER,
-          backgroundColor: "transparent",
+          segment: {
+            borderColor: (ctx) => getLatencyColor(ctx.p1.parsed.y),
+            borderDash: (ctx) => {
+              return ctx.p1.x - ctx.p0.x > 10 ? [6, 6] : undefined;
+            },
+          },
           tension: 0.4,
-          pointRadius: 3,
-          pointHoverRadius: 5,
+          cubicInterpolationMode: "monotone",
+          pointRadius: 0,
+          pointHoverRadius: 0,
           pointBackgroundColor: (ctx: ScriptableContext<"line">) => {
-            const raw = ctx.raw as { y?: number | null } | undefined;
-            return getLatencyColor(raw?.y ?? null);
+            return getLatencyColor(ctx?.parsed?.x ?? null);
           },
           spanGaps: true,
         } as ChartDataset<"line", { x: number; y: number }[]>,
@@ -149,7 +162,7 @@ export function PingGraph({
           {m.network_latency()}
         </h3>
         <span className={`text-sm font-semibold ${getCurrentLatencyColor(latestLatency)}`}>
-          {latestLatency == null ? m.latency_unknown() : m.latency_ms({ latency: latestLatency })}
+          {latestLatency == null ? "Unknown" : `${latestLatency} ms`}
         </span>
       </div>
 
@@ -160,15 +173,17 @@ export function PingGraph({
       <div className="mt-3 flex items-center justify-center gap-4 text-xs">
         <div className="flex items-center gap-1.5">
           <div className="w-2 h-2 rounded-full bg-green-400" />
-          <span className="text-parchment/60">{m.latency_legend_good()}</span>
+          <span className="text-parchment/60">&lt;{LATENCY_THRESHOLDS.GOOD}ms</span>
         </div>
         <div className="flex items-center gap-1.5">
           <div className="w-2 h-2 rounded-full bg-yellow-400" />
-          <span className="text-parchment/60">{m.latency_legend_medium()}</span>
+          <span className="text-parchment/60">
+            {LATENCY_THRESHOLDS.GOOD}-{LATENCY_THRESHOLDS.MEDIUM}ms
+          </span>
         </div>
         <div className="flex items-center gap-1.5">
           <div className="w-2 h-2 rounded-full bg-red-400" />
-          <span className="text-parchment/60">{m.latency_legend_poor()}</span>
+          <span className="text-parchment/60">&gt;{LATENCY_THRESHOLDS.MEDIUM}ms</span>
         </div>
       </div>
     </div>
