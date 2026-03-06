@@ -61,6 +61,7 @@ jobs:
         run: |
           echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" >> .env
           echo "VITE_SERVER_ADDRESS=${{ secrets.VITE_SERVER_ADDRESS }}" >> .env
+          echo "VITE_APP_VERSION=${{ needs.release.outputs.tag }}" >> .env
       - run: bun install
       - run: bun run build
       - name: Create dist archive
