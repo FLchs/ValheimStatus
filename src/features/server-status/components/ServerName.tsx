@@ -5,7 +5,9 @@ import { m } from "#/i18n/messages";
 export function ServerName() {
   const { data } = useServerStatus();
   const navigate = useNavigate();
-  const { apiDomain, serverDomain } = useParams({ from: "/_localized/s/$apiDomain/{-$serverDomain}" });
+  const { apiDomain, serverDomain } = useParams({
+    from: "/_localized/$apiDomain/{-$serverDomain}",
+  });
 
   if (!data) return null;
 
@@ -24,7 +26,7 @@ export function ServerName() {
             },
           })
         }
-        className="mt-3 text-xs text-parchment/50 hover:text-amber-400 transition-colors duration-200 flex items-center justify-center gap-1 mx-auto"
+        className="mt-3 text-xs text-parchment/50 hover:text-amber-400 transition-colors duration-200 flex items-center justify-center gap-1 mx-auto cursor-pointer"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

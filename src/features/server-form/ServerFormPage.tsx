@@ -6,7 +6,7 @@ import { LanguageSwitcher } from "#/components/LanguageSwitcher";
 import { testApi } from "./api";
 import { m } from "#/i18n/messages";
 import { Route } from "#/routes/_localized/index";
-import { normalizeApiDomain } from "#/features/server-status/ConfigContext";
+import { normalizeApiDomain, buildStatusUrl } from "#/features/server-status/ConfigContext";
 
 export function ServerFormPage() {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ export function ServerFormPage() {
 
   const form = useForm({
     defaultValues: {
-      apiAddress: api ?? "",
+      apiAddress: api ? buildStatusUrl(api) : "",
       serverAddress: server ?? "",
     },
     onSubmit: async ({ value }) => {
@@ -22,7 +22,7 @@ export function ServerFormPage() {
       const normalizedApi = normalizeApiDomain(value.apiAddress);
       const encodedApi = encodeURIComponent(normalizedApi);
       const encodedServer = encodeURIComponent(value.serverAddress);
-      await navigate({ to: `/s/${encodedApi}/${encodedServer}` });
+      await navigate({ to: `/${encodedApi}/${encodedServer}` });
     },
   });
 
