@@ -1,3 +1,23 @@
+# [1.0.0](https://github.com/FLchs/ValheimStatus/compare/v0.3.1...v1.0.0) (2026-03-06)
+
+
+* feat!: remove /s/ prefix from server status URLs (#4) ([0ae5d4d](https://github.com/FLchs/ValheimStatus/commit/0ae5d4d4a40f68d3273ebcbbee9f64816912273f)), closes [#4](https://github.com/FLchs/ValheimStatus/issues/4)
+
+
+### BREAKING CHANGES
+
+* Server status URLs no longer use the /s/ prefix.
+URLs changed from /s/{api}/{server} to /{api}/{server}.
+Old URLs will need to be updated.
+
+- Moved route from /_localized/s/$apiDomain/{-$serverDomain} to /_localized/$apiDomain/{-$serverDomain}
+- Updated navigation in ServerFormPage to use new URL format
+- Updated useParams reference in ServerName component
+
+* fix: change server autofill
+
+
+
 ## [0.3.1](https://github.com/FLchs/ValheimStatus/compare/v0.3.0...v0.3.1) (2026-03-06)
 
 
