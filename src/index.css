@@ -81,13 +81,14 @@
 body {
   min-height: 100vh;
   color: var(--color-parchment);
-  background-image: url(/background.jpg);
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   margin: 0;
   font-family: Cinzel, serif;
+  /* Default medieval theme - will be overridden by [data-theme] selectors */
+  background-image: url(/background-medieval.jpg);
 }
 
 #root {
@@ -98,7 +99,7 @@ body {
 
 /* Medieval Theme (Default) */
 [data-theme=medieval] body {
-  background-image: url(/background.jpg);
+  background-image: url(/background-medieval.jpg);
   font-family: Cinzel, serif;
 }
 
@@ -1175,7 +1176,7 @@ body {
 /* Caesar Theme */
 [data-theme=caesar] body {
   color: var(--color-caesar-ink);
-  background-image: url(/caesar.jpg);
+  background-image: url(/background-caesar.jpg);
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
