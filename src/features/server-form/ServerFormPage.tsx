@@ -3,6 +3,7 @@ import { useNavigate } from "@tanstack/react-router";
 import { TextField } from "./components/TextField";
 import { SubmitButton } from "./components/SubmitButton";
 import { LanguageSwitcher } from "#/components/LanguageSwitcher";
+import { ThemeSwitcher } from "#/components/ThemeSwitcher";
 import { testApi } from "./api";
 import { m } from "#/i18n/messages";
 import { Route } from "#/routes/_localized/index";
@@ -103,6 +104,9 @@ export function ServerFormPage() {
 
           {/* Footer hint */}
           <p className="text-xs text-parchment/40 text-center pt-2">{m.form_footer_text()}</p>
+
+          {/* Theme Switcher */}
+          <ThemeSwitcher />
 
           {/* Language Switcher */}
           <LanguageSwitcher />

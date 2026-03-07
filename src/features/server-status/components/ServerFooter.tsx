@@ -1,5 +1,6 @@
 import { m } from "#/i18n/messages";
 import { LanguageSwitcher } from "#/components/LanguageSwitcher";
+import { ThemeSwitcher } from "#/components/ThemeSwitcher";
 
 export function ServerFooter() {
   return (
@@ -8,6 +9,7 @@ export function ServerFooter() {
         {m.designed_by()}{" "}
         <span className="text-amber-500/70 font-medium">François Lachèse</span>
       </p>
+      <ThemeSwitcher />
       <LanguageSwitcher />
     </div>
   );
