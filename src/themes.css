@@ -69,7 +69,7 @@
 body {
   margin: 0;
   font-family: 'Cinzel', serif;
-  background-image: url('/background.jpg');
+  background-image: url('/background-medieval.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -87,7 +87,7 @@ body {
 /* Medieval Theme (default) */
 [data-theme="medieval"] body {
   font-family: 'Cinzel', serif;
-  background-image: url('/background.jpg');
+  background-image: url('/background-medieval.jpg');
 }
 
 [data-theme="medieval"] #root {

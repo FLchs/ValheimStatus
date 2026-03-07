@@ -22,8 +22,16 @@ function getStoredTheme(): Theme {
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>(getStoredTheme);
+  const [theme, setThemeState] = useState<Theme>(() => {
+    // Initialize and apply immediately during render
+    const initial = getStoredTheme();
+    if (typeof document !== "undefined") {
+      document.documentElement.setAttribute("data-theme", initial);
+    }
+    return initial;
+  });
 
+  // Keep in sync with state changes
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
