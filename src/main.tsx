@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import "./themes.css";
+import "./index.css";
 
 import { LocaleProvider } from "./i18n/LocaleContext.tsx";
 import { ThemeProvider } from "./theme/ThemeContext.tsx";
