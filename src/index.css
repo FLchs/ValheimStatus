@@ -107,6 +107,38 @@ body {
   background-color: #0a0f0dd9;
 }
 
+/* Medieval Steam Button */
+[data-theme=medieval] .bg-gradient-to-b.from-amber-700,
+[data-theme=medieval] .bg-linear-to-b.from-amber-600\/90 {
+  background: linear-gradient(180deg, #d4a853 0%, #8b6914 100%) !important;
+  border-color: #d4a853 !important;
+  box-shadow: 0 4px 12px #0006 !important;
+  color: #fff !important;
+}
+
+[data-theme=medieval] .bg-gradient-to-b.from-amber-700:hover,
+[data-theme=medieval] .bg-linear-to-b.from-amber-600\/90:hover {
+  background: linear-gradient(180deg, #e8c874 0%, #b0801c 100%) !important;
+  box-shadow: 0 6px 20px #d4a85366 !important;
+}
+
+/* Medieval Language Switcher */
+[data-theme=medieval] .bg-amber-600\/80 {
+  background: #d4a853 !important;
+  color: #fff !important;
+  box-shadow: 0 2px 5px #0003 !important;
+}
+
+[data-theme=medieval] .bg-stone-800\/60 {
+  background: #2d332899 !important;
+  border-color: #3d453880 !important;
+}
+
+[data-theme=medieval] .bg-stone-700\/60:hover {
+  background: #3d4538cc !important;
+  border-color: #d4a85380 !important;
+}
+
 /* Synthwave Theme */
 [data-theme=synthwave] body {
   color: var(--color-synth-text);
@@ -205,6 +237,38 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
+}
+
+/* Synthwave Steam Button */
+[data-theme=synthwave] .bg-gradient-to-b.from-amber-700,
+[data-theme=synthwave] .bg-linear-to-b.from-amber-600\/90 {
+  background: linear-gradient(180deg, #00b8c2 0%, #00f5ff 100%) !important;
+  border-color: #00f5ff80 !important;
+  box-shadow: 0 0 20px #00f5ff4d !important;
+  color: #000 !important;
+}
+
+[data-theme=synthwave] .bg-gradient-to-b.from-amber-700:hover,
+[data-theme=synthwave] .bg-linear-to-b.from-amber-600\/90:hover {
+  background: linear-gradient(180deg, #00f5ff 0%, #00b8c2 100%) !important;
+  box-shadow: 0 0 30px #00f5ff80 !important;
+}
+
+/* Synthwave Language Switcher */
+[data-theme=synthwave] .bg-amber-600\/80 {
+  background: #ff006e !important;
+  color: #fff !important;
+  box-shadow: 0 0 10px #ff006e66 !important;
+}
+
+[data-theme=synthwave] .bg-stone-800\/60 {
+  background: #1a0b2e99 !important;
+  border-color: #00f5ff33 !important;
+}
+
+[data-theme=synthwave] .bg-stone-700\/60:hover {
+  background: #1a0b2ecc !important;
+  border-color: #00f5ff66 !important;
 }
 
 /* Hugo Boss Theme */
@@ -667,6 +731,39 @@ body {
 
 [data-theme=hugo-boss] [class*=bg-gradient-to-br] canvas {
   filter: contrast(1.1) brightness(1.05);
+}
+
+/* Hugo Boss Steam Button */
+[data-theme=hugo-boss] .bg-gradient-to-b.from-amber-700,
+[data-theme=hugo-boss] .bg-linear-to-b.from-amber-600\/90 {
+  background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%) !important;
+  border-color: #8b0000 !important;
+  box-shadow: 0 0 15px #8b00004d !important;
+  color: #d4af37 !important;
+}
+
+[data-theme=hugo-boss] .bg-gradient-to-b.from-amber-700:hover,
+[data-theme=hugo-boss] .bg-linear-to-b.from-amber-600\/90:hover {
+  background: linear-gradient(180deg, #3a3a3a 0%, #2a2a2a 100%) !important;
+  border-color: #dc143c !important;
+  box-shadow: 0 0 25px #8b000080 !important;
+}
+
+/* Hugo Boss Language Switcher */
+[data-theme=hugo-boss] .bg-amber-600\/80 {
+  background: #8b0000 !important;
+  color: #fff !important;
+  box-shadow: 0 0 10px #8b000066 !important;
+}
+
+[data-theme=hugo-boss] .bg-stone-800\/60 {
+  background: #111 !important;
+  border-color: #333 !important;
+}
+
+[data-theme=hugo-boss] .bg-stone-700\/60:hover {
+  background: #1a1a1a !important;
+  border-color: #8b0000 !important;
 }
 
 [data-theme=hugo-boss] .text-xs.text-parchment\/50,
@@ -1173,6 +1270,40 @@ body {
   left: 0;
 }
 
+/* Royal Steam Button */
+[data-theme=royal] .bg-gradient-to-b.from-amber-700,
+[data-theme=royal] .bg-linear-to-b.from-amber-600\/90 {
+  background: linear-gradient(180deg, #b8860b 0%, #ffd700 100%) !important;
+  border-color: #ffd700 !important;
+  box-shadow: 0 0 20px #ffd70066 !important;
+  color: #001a4d !important;
+  text-shadow: none !important;
+}
+
+[data-theme=royal] .bg-gradient-to-b.from-amber-700:hover,
+[data-theme=royal] .bg-linear-to-b.from-amber-600\/90:hover {
+  background: linear-gradient(180deg, #ffd700 0%, #b8860b 100%) !important;
+  box-shadow: 0 0 30px #ffd70099 !important;
+}
+
+/* Royal Language Switcher */
+[data-theme=royal] .bg-amber-600\/80 {
+  background: linear-gradient(180deg, #ffd700 0%, #b8860b 100%) !important;
+  color: #001a4d !important;
+  box-shadow: 0 0 10px #ffd70066 !important;
+  font-weight: 600 !important;
+}
+
+[data-theme=royal] .bg-stone-800\/60 {
+  background: #00338080 !important;
+  border-color: #ffd70066 !important;
+}
+
+[data-theme=royal] .bg-stone-700\/60:hover {
+  background: #0047b399 !important;
+  border-color: #ffd70080 !important;
+}
+
 /* Caesar Theme */
 [data-theme=caesar] body {
   color: var(--color-caesar-ink);
@@ -1554,6 +1685,41 @@ body {
   color: var(--color-caesar-bronze) !important;
   font-family: Cinzel, serif !important;
   font-size: .65em !important;
+}
+
+/* Caesar Steam Button */
+[data-theme=caesar] .bg-gradient-to-b.from-amber-700,
+[data-theme=caesar] .bg-linear-to-b.from-amber-600\/90 {
+  background: linear-gradient(180deg, var(--color-caesar-bronze) 0%, var(--color-caesar-bronze-dark) 100%) !important;
+  border-color: var(--color-caesar-gold) !important;
+  box-shadow: 0 4px 12px #0000004d, inset 0 1px 2px #ffffff4d !important;
+  color: var(--color-caesar-ink) !important;
+  text-shadow: none !important;
+}
+
+[data-theme=caesar] .bg-gradient-to-b.from-amber-700:hover,
+[data-theme=caesar] .bg-linear-to-b.from-amber-600\/90:hover {
+  background: linear-gradient(180deg, var(--color-caesar-gold) 0%, var(--color-caesar-bronze) 100%) !important;
+  border-color: var(--color-caesar-gold) !important;
+  box-shadow: 0 6px 20px #d4af3766, inset 0 1px 2px #ffffff66 !important;
+}
+
+/* Caesar Language Switcher */
+[data-theme=caesar] .bg-amber-600\/80 {
+  background: var(--color-caesar-bronze) !important;
+  color: #fff !important;
+  box-shadow: 0 2px 5px #00000033 !important;
+}
+
+[data-theme=caesar] .bg-stone-800\/60 {
+  background: #e8d4a899 !important;
+  border-color: var(--color-caesar-bronze) !important;
+  color: var(--color-caesar-ink) !important;
+}
+
+[data-theme=caesar] .bg-stone-700\/60:hover {
+  background: #f4e4c1cc !important;
+  border-color: var(--color-caesar-gold) !important;
 }
 
 [data-theme=caesar] body:after {
