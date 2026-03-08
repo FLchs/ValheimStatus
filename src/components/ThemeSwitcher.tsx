@@ -12,24 +12,19 @@ export function ThemeSwitcher() {
   const { theme: currentTheme, setTheme } = useTheme();
 
   return (
-    <div className="flex items-center justify-center gap-1 mt-3 flex-wrap">
-      {themes.map((theme) => (
-        <button
-          key={theme.id}
-          type="button"
-          onClick={() => setTheme(theme.id)}
-          className={`px-2 py-1 text-xs rounded-md transition-all duration-200 ${
-            currentTheme === theme.id
-              ? "bg-amber-600/80 text-white font-medium"
-              : "bg-stone-800/60 text-parchment/50 hover:text-parchment/70 hover:bg-stone-700/60"
-          }`}
-          aria-label={`Switch to ${theme.label} theme`}
-          title={theme.label}
-        >
-          <span className="mr-1">{theme.icon}</span>
-          {theme.label}
-        </button>
-      ))}
+    <div className="flex items-center justify-center mt-3">
+      <select
+        value={currentTheme}
+        onChange={(e) => setTheme(e.target.value as typeof themes[number]["id"])}
+        className="px-3 py-1.5 text-xs rounded-md bg-stone-800/60 text-parchment border border-stone-700 hover:border-stone-600 focus:border-amber-600 focus:outline-none transition-colors cursor-pointer"
+        aria-label="Select theme"
+      >
+        {themes.map((theme) => (
+          <option key={theme.id} value={theme.id}>
+            {theme.icon} {theme.label}
+          </option>
+        ))}
+      </select>
     </div>
   );
 }
