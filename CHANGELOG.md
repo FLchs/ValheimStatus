@@ -1,3 +1,12 @@
+# [1.2.0](https://github.com/FLchs/ValheimStatus/compare/v1.1.2...v1.2.0) (2026-03-08)
+
+
+### Features
+
+* add demo page  ([#9](https://github.com/FLchs/ValheimStatus/issues/9)) ([4fee47d](https://github.com/FLchs/ValheimStatus/commit/4fee47d833ef51da4afd1cec6c112d0a4b52efd9))
+
+
+
 ## [1.1.2](https://github.com/FLchs/ValheimStatus/compare/v1.1.1...v1.1.2) (2026-03-08)
 
 
