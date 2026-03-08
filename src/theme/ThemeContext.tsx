@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from "react";
 
-export type Theme = "medieval" | "synthwave" | "hugo-boss" | "royal" | "caesar";
+export type Theme = "viking" | "synthwave" | "hugo-boss" | "royal" | "caesar";
 
 type ThemeContextType = {
   theme: Theme;
@@ -8,14 +8,14 @@ type ThemeContextType = {
 };
 
 const STORAGE_KEY = "valheim-theme";
-const DEFAULT_THEME: Theme = "medieval";
+const DEFAULT_THEME: Theme = "viking";
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 function getStoredTheme(): Theme {
   if (typeof window === "undefined") return DEFAULT_THEME;
   const stored = localStorage.getItem(STORAGE_KEY) as Theme | null;
-  if (stored && ["medieval", "synthwave", "hugo-boss", "royal", "caesar"].includes(stored)) {
+  if (stored && ["viking", "synthwave", "hugo-boss", "royal", "caesar"].includes(stored)) {
     return stored;
   }
   return DEFAULT_THEME;

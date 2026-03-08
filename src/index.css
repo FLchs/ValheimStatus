@@ -3,7 +3,7 @@
 @import "tailwindcss";
 
 :root {
-  /* Medieval Theme */
+  /* Viking Theme */
   --color-bg-primary: #0a0f0d;
   --color-bg-secondary: #141a16;
   --color-stone: #2d3328;
@@ -87,8 +87,8 @@ body {
   background-attachment: fixed;
   margin: 0;
   font-family: Cinzel, serif;
-  /* Default medieval theme - will be overridden by [data-theme] selectors */
-  background-image: url(/background-medieval.jpg);
+  /* Default viking theme - will be overridden by [data-theme] selectors */
+  background-image: url(/background-viking.jpg);
 }
 
 #root {
@@ -97,44 +97,44 @@ body {
   min-height: 100vh;
 }
 
-/* Medieval Theme (Default) */
-[data-theme=medieval] body {
-  background-image: url(/background-medieval.jpg);
+/* Viking Theme (Default) */
+[data-theme=viking] body {
+  background-image: url(/background-viking.jpg);
   font-family: Cinzel, serif;
 }
 
-[data-theme=medieval] #root {
+[data-theme=viking] #root {
   background-color: #0a0f0dd9;
 }
 
-/* Medieval Steam Button */
-[data-theme=medieval] .bg-gradient-to-b.from-amber-700,
-[data-theme=medieval] .bg-linear-to-b.from-amber-600\/90 {
+/* Viking Steam Button */
+[data-theme=viking] .bg-gradient-to-b.from-amber-700,
+[data-theme=viking] .bg-linear-to-b.from-amber-600\/90 {
   background: linear-gradient(180deg, #d4a853 0%, #8b6914 100%) !important;
   border-color: #d4a853 !important;
   box-shadow: 0 4px 12px #0006 !important;
   color: #fff !important;
 }
 
-[data-theme=medieval] .bg-gradient-to-b.from-amber-700:hover,
-[data-theme=medieval] .bg-linear-to-b.from-amber-600\/90:hover {
+[data-theme=viking] .bg-gradient-to-b.from-amber-700:hover,
+[data-theme=viking] .bg-linear-to-b.from-amber-600\/90:hover {
   background: linear-gradient(180deg, #e8c874 0%, #b0801c 100%) !important;
   box-shadow: 0 6px 20px #d4a85366 !important;
 }
 
-/* Medieval Language Switcher */
-[data-theme=medieval] .bg-amber-600\/80 {
+/* Viking Language Switcher */
+[data-theme=viking] .bg-amber-600\/80 {
   background: #d4a853 !important;
   color: #fff !important;
   box-shadow: 0 2px 5px #0003 !important;
 }
 
-[data-theme=medieval] .bg-stone-800\/60 {
+[data-theme=viking] .bg-stone-800\/60 {
   background: #2d332899 !important;
   border-color: #3d453880 !important;
 }
 
-[data-theme=medieval] .bg-stone-700\/60:hover {
+[data-theme=viking] .bg-stone-700\/60:hover {
   background: #3d4538cc !important;
   border-color: #d4a85380 !important;
 }
@@ -1333,56 +1333,74 @@ body {
   left: 0;
 }
 
-[data-theme=caesar] h1,
-[data-theme=caesar] h2 {
-  letter-spacing: .25em;
+[data-theme=caesar] h1 {
+  letter-spacing: .2em;
   text-transform: uppercase;
-  border-bottom: 3px solid var(--color-caesar-bronze);
-  border-top: 3px solid var(--color-caesar-bronze);
+  border-bottom: 2px solid var(--color-caesar-bronze);
+  border-top: 2px solid var(--color-caesar-bronze);
   background: linear-gradient(#f4e4c1f2, #fdf6e3fa, #f4e4c1f2);
-  padding: 15px 80px;
-  font-weight: 800;
+  padding: 8px 60px;
+  font-weight: 700;
   display: inline-block;
   position: relative;
-  box-shadow: 0 4px 12px #0000004d, 0 0 30px #d4af3733;
+  box-shadow: 0 2px 8px #0000004d, 0 0 20px #d4af3726;
   color: var(--color-caesar-ink) !important;
-  text-shadow: 0 0 10px #fffc, 0 0 20px #fff9, 2px 2px 4px #0006 !important;
+  text-shadow: 0 0 8px #fffc, 2px 2px 4px #0006 !important;
   font-family: Cinzel, serif !important;
-}
-
-[data-theme=caesar] h1 {
-  font-size: 2.2em !important;
-}
-
-[data-theme=caesar] h2 {
   font-size: 1.8em !important;
 }
 
 [data-theme=caesar] h1:before,
-[data-theme=caesar] h2:before,
-[data-theme=caesar] h1:after,
-[data-theme=caesar] h2:after {
+[data-theme=caesar] h1:after {
   content: "";
   background-image: url(/assets/laurel-DbvDVkyc.svg);
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: contain;
-  width: 45px;
-  height: 45px;
+  width: 32px;
+  height: 32px;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  opacity: 0.8;
 }
 
-[data-theme=caesar] h1:before,
-[data-theme=caesar] h2:before {
-  left: 15px;
+[data-theme=caesar] h1:before {
+  left: 12px;
 }
 
-[data-theme=caesar] h1:after,
-[data-theme=caesar] h2:after {
-  right: 15px;
+[data-theme=caesar] h1:after {
+  right: 12px;
   transform: translateY(-50%) scaleX(-1);
+}
+
+[data-theme=caesar] h2 {
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-caesar-ink) !important;
+  font-family: Cinzel, serif !important;
+  font-size: 1.4em !important;
+  position: relative;
+  display: inline-block;
+}
+
+[data-theme=caesar] h2:before,
+[data-theme=caesar] h2:after {
+  content: "";
+  vertical-align: middle;
+  background: linear-gradient(90deg, transparent, var(--color-caesar-bronze), transparent);
+  width: 25px;
+  height: 2px;
+  display: inline-block;
+}
+
+[data-theme=caesar] h2:before {
+  margin-right: 10px;
+}
+
+[data-theme=caesar] h2:after {
+  margin-left: 10px;
 }
 
 [data-theme=caesar] h3 {

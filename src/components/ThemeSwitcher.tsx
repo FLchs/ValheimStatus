@@ -1,11 +1,11 @@
 import { useTheme } from "#/theme/ThemeContext";
 
 const themes = [
-  { id: "medieval" as const, label: "Medieval", icon: "⚔️" },
-  { id: "synthwave" as const, label: "Synthwave", icon: "🌆" },
-  { id: "hugo-boss" as const, label: "Boss", icon: "👔" },
-  { id: "royal" as const, label: "Royal", icon: "👑" },
-  { id: "caesar" as const, label: "Caesar", icon: "🏛️" },
+  { id: "viking" as const, label: "Viking" },
+  { id: "synthwave" as const, label: "Synthwave" },
+  { id: "hugo-boss" as const, label: "Hugo Boss" },
+  { id: "royal" as const, label: "Royal" },
+  { id: "caesar" as const, label: "Caesar" },
 ];
 
 export function ThemeSwitcher() {
@@ -21,7 +21,7 @@ export function ThemeSwitcher() {
       >
         {themes.map((theme) => (
           <option key={theme.id} value={theme.id}>
-            {theme.icon} {theme.label}
+            {theme.label}
           </option>
         ))}
       </select>
