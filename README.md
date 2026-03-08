@@ -6,7 +6,7 @@
 
 A beautiful, real-time status page for your Valheim game server. Keep your community informed about server availability, player count, and connection quality.
 
-![Valheim Server Status Screenshot](screenshot.png)
+![Valheim Server Status Screenshot](docs/screenshot.png)
 
 ## Features
 
