@@ -1,3 +1,12 @@
+## [1.1.2](https://github.com/FLchs/ValheimStatus/compare/v1.1.1...v1.1.2) (2026-03-08)
+
+
+### Bug Fixes
+
+* **assets:** rename background file ([#8](https://github.com/FLchs/ValheimStatus/issues/8)) ([6afbb8a](https://github.com/FLchs/ValheimStatus/commit/6afbb8a24f74eeb077ac0fac8453162342077797))
+
+
+
 ## [1.1.1](https://github.com/FLchs/ValheimStatus/compare/v1.1.0...v1.1.1) (2026-03-08)
 
 
