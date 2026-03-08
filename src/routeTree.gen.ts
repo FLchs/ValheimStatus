@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as LocalizedRouteImport } from './routes/_localized'
 import { Route as LocalizedIndexRouteImport } from './routes/_localized/index'
+import { Route as LocalizedDemoRouteImport } from './routes/_localized/demo'
 import { Route as LocalizedApiDomainChar123ServerDomainChar125RouteImport } from './routes/_localized/$apiDomain/{-$serverDomain}'
 
 const LocalizedRoute = LocalizedRouteImport.update({
@@ -22,6 +23,11 @@ const LocalizedIndexRoute = LocalizedIndexRouteImport.update({
   path: '/',
   getParentRoute: () => LocalizedRoute,
 } as any)
+const LocalizedDemoRoute = LocalizedDemoRouteImport.update({
+  id: '/demo',
+  path: '/demo',
+  getParentRoute: () => LocalizedRoute,
+} as any)
 const LocalizedApiDomainChar123ServerDomainChar125Route =
   LocalizedApiDomainChar123ServerDomainChar125RouteImport.update({
     id: '/$apiDomain/{-$serverDomain}',
@@ -31,26 +37,30 @@ const LocalizedApiDomainChar123ServerDomainChar125Route =
 
 export interface FileRoutesByFullPath {
   '/': typeof LocalizedIndexRoute
+  '/demo': typeof LocalizedDemoRoute
   '/$apiDomain/{-$serverDomain}': typeof LocalizedApiDomainChar123ServerDomainChar125Route
 }
 export interface FileRoutesByTo {
+  '/demo': typeof LocalizedDemoRoute
   '/': typeof LocalizedIndexRoute
   '/$apiDomain/{-$serverDomain}': typeof LocalizedApiDomainChar123ServerDomainChar125Route
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_localized': typeof LocalizedRouteWithChildren
+  '/_localized/demo': typeof LocalizedDemoRoute
   '/_localized/': typeof LocalizedIndexRoute
   '/_localized/$apiDomain/{-$serverDomain}': typeof LocalizedApiDomainChar123ServerDomainChar125Route
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$apiDomain/{-$serverDomain}'
+  fullPaths: '/' | '/demo' | '/$apiDomain/{-$serverDomain}'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$apiDomain/{-$serverDomain}'
+  to: '/demo' | '/' | '/$apiDomain/{-$serverDomain}'
   id:
     | '__root__'
     | '/_localized'
+    | '/_localized/demo'
     | '/_localized/'
     | '/_localized/$apiDomain/{-$serverDomain}'
   fileRoutesById: FileRoutesById
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocalizedIndexRouteImport
       parentRoute: typeof LocalizedRoute
     }
+    '/_localized/demo': {
+      id: '/_localized/demo'
+      path: '/demo'
+      fullPath: '/demo'
+      preLoaderRoute: typeof LocalizedDemoRouteImport
+      parentRoute: typeof LocalizedRoute
+    }
     '/_localized/$apiDomain/{-$serverDomain}': {
       id: '/_localized/$apiDomain/{-$serverDomain}'
       path: '/$apiDomain/{-$serverDomain}'
@@ -86,11 +103,13 @@ declare module '@tanstack/react-router' {
 }
 
 interface LocalizedRouteChildren {
+  LocalizedDemoRoute: typeof LocalizedDemoRoute
   LocalizedIndexRoute: typeof LocalizedIndexRoute
   LocalizedApiDomainChar123ServerDomainChar125Route: typeof LocalizedApiDomainChar123ServerDomainChar125Route
 }
 
 const LocalizedRouteChildren: LocalizedRouteChildren = {
+  LocalizedDemoRoute: LocalizedDemoRoute,
   LocalizedIndexRoute: LocalizedIndexRoute,
   LocalizedApiDomainChar123ServerDomainChar125Route:
     LocalizedApiDomainChar123ServerDomainChar125Route,

@@ -47,5 +47,7 @@
   "form_error_required": "L'adresse du serveur est requise",
   "form_error_invalid_url": "Format d'URL invalide",
   "form_footer_text": "Crée une page pour vérifier si votre serveur est en ligne",
-  "change_server_button": "Changer de serveur"
+  "change_server_button": "Changer de serveur",
+  "demo_badge": "Démo",
+  "demo_description": "Données simulées pour la démonstration"
 }

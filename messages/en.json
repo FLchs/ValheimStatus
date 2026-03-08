@@ -47,5 +47,7 @@
   "form_error_required": "Server address is required",
   "form_error_invalid_url": "Invalid URL format",
   "form_footer_text": "Creates a page to check if your server is online",
-  "change_server_button": "Change Server"
+  "change_server_button": "Change Server",
+  "demo_badge": "Demo",
+  "demo_description": "Simulated data for demonstration"
 }
