@@ -30,7 +30,7 @@ export function ServerCard() {
 
       {hasError && <ErrorBanner />}
 
-      <div className="bg-gradient-to-b from-stone-900/80 to-stone-950/90 border-2 border-stone-700/50 rounded-xl p-6 md:p-8 shadow-2xl shadow-black/50">
+      <div className="bg-gradient-to-b from-stone-900/80 to-stone-950/90 border-2 border-stone-700/50 rounded-xl px-6 pt-6 md:px-8 md:pt-8 shadow-2xl pb-2 shadow-black/50">
         <ServerName />
         <ServerStatusGrid />
         <ServerDetailsGrid />
