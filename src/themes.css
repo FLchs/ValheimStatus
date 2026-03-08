@@ -3,7 +3,7 @@
 @import "tailwindcss";
 
 :root {
-  /* Medieval theme (current) - NO CHANGES */
+  /* Viking theme (current) - NO CHANGES */
   --color-bg-primary: #0a0f0d;
   --color-bg-secondary: #141a16;
   --color-stone: #2d3328;
@@ -69,7 +69,7 @@
 body {
   margin: 0;
   font-family: 'Cinzel', serif;
-  background-image: url('/background-medieval.jpg');
+  background-image: url('/background-viking.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -84,44 +84,44 @@ body {
   background-color: rgba(10, 15, 13, 0.85);
 }
 
-/* Medieval Theme (default) */
-[data-theme="medieval"] body {
+/* Viking Theme (default) */
+[data-theme="viking"] body {
   font-family: 'Cinzel', serif;
-  background-image: url('/background-medieval.jpg');
+  background-image: url('/background-viking.jpg');
 }
 
-[data-theme="medieval"] #root {
+[data-theme="viking"] #root {
   background-color: rgba(10, 15, 13, 0.85);
 }
 
-/* Medieval Steam Button */
-[data-theme="medieval"] .bg-gradient-to-b.from-amber-700,
-[data-theme="medieval"] .bg-linear-to-b.from-amber-600\/90 {
+/* Viking Steam Button */
+[data-theme="viking"] .bg-gradient-to-b.from-amber-700,
+[data-theme="viking"] .bg-linear-to-b.from-amber-600\/90 {
   background: linear-gradient(180deg, #d4a853 0%, #8b6914 100%) !important;
   border-color: #d4a853 !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
   color: #fff !important;
 }
 
-[data-theme="medieval"] .bg-gradient-to-b.from-amber-700:hover,
-[data-theme="medieval"] .bg-linear-to-b.from-amber-600\/90:hover {
+[data-theme="viking"] .bg-gradient-to-b.from-amber-700:hover,
+[data-theme="viking"] .bg-linear-to-b.from-amber-600\/90:hover {
   background: linear-gradient(180deg, #e8c874 0%, #b0801c 100%) !important;
   box-shadow: 0 6px 20px rgba(212, 168, 83, 0.4) !important;
 }
 
-/* Medieval Language Switcher */
-[data-theme="medieval"] .bg-amber-600\/80 {
+/* Viking Language Switcher */
+[data-theme="viking"] .bg-amber-600\/80 {
   background: #d4a853 !important;
   color: #fff !important;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3) !important;
 }
 
-[data-theme="medieval"] .bg-stone-800\/60 {
+[data-theme="viking"] .bg-stone-800\/60 {
   background: rgba(45, 51, 40, 0.6) !important;
   border-color: rgba(61, 69, 56, 0.5) !important;
 }
 
-[data-theme="medieval"] .bg-stone-700\/60:hover {
+[data-theme="viking"] .bg-stone-700\/60:hover {
   background: rgba(61, 69, 56, 0.8) !important;
   border-color: rgba(212, 168, 83, 0.5) !important;
 }
@@ -477,6 +477,7 @@ body {
 [data-theme="royal"] .bg-stone-800\/60 {
   background: rgba(0, 51, 128, 0.5) !important;
   border-color: rgba(255, 215, 0, 0.3) !important;
+  font-weight: 400 !important;
 }
 
 [data-theme="royal"] .bg-stone-700\/60:hover {
