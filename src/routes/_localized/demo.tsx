@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { useLocale } from '#/i18n/LocaleContext'
 import { ConfigProvider } from '#/features/server-status/ConfigContext'
 import { ServerCard } from '#/features/server-status/components/ServerCard'
+import { m } from '#/i18n/messages'
 
 function DemoComponent() {
   useLocale() // Subscribe to locale changes
