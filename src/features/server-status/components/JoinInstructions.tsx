@@ -27,23 +27,30 @@ export function JoinInstructions() {
         </a>
       </div>
 
-      <div className="text-center mb-3">
-        <span className="text-parchment/60 text-sm italic">{m.join_or_manual()}</span>
-      </div>
-
-      <ol className="text-parchment/80 text-sm space-y-2 list-decimal list-inside">
-        <li>{m.join_step_1()}</li>
-        <li>{m.join_step_2()}</li>
-        <li>{m.join_step_3()}</li>
-        <li>
-          {m.join_step_4()}{" "}
-          <span className="text-amber-400 font-bold tracking-wider font-mono">
-            {serverDomain}:{data.port}
+      <details className="group">
+        <summary className="flex items-center justify-center gap-2 text-parchment/60 hover:text-parchment/80 text-sm cursor-pointer list-none">
+          <span>{m.join_or_manual()}</span>
+          <span className="inline-flex items-center justify-center w-6 h-6 bg-stone-800/60 hover:bg-stone-700/60 rounded-full transition-all group-open:rotate-180 border border-stone-700/50">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+            </svg>
           </span>
-        </li>
-        <li>{m.join_step_5()}</li>
-        <li>{m.join_step_6()}</li>
-      </ol>
+        </summary>
+        
+        <ol className="mt-3 text-parchment/80 text-sm space-y-2 list-decimal list-inside">
+          <li>{m.join_step_1()}</li>
+          <li>{m.join_step_2()}</li>
+          <li>{m.join_step_3()}</li>
+          <li>
+            {m.join_step_4_prefix()}{" "}
+            <span className="text-amber-400 font-bold tracking-wider font-mono">
+              {serverDomain}:{data.port}
+            </span>
+          </li>
+          <li>{m.join_step_5()}</li>
+          <li>{m.join_step_6()}</li>
+        </ol>
+      </details>
     </div>
   );
 }
