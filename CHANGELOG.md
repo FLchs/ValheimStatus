@@ -1,3 +1,12 @@
+# [1.1.0](https://github.com/FLchs/ValheimStatus/compare/v1.0.0...v1.1.0) (2026-03-08)
+
+
+### Features
+
+* themes ([#6](https://github.com/FLchs/ValheimStatus/issues/6)) ([87746df](https://github.com/FLchs/ValheimStatus/commit/87746df57acb8f2db0ab487f799bf06c34d87917))
+
+
+
 # [1.0.0](https://github.com/FLchs/ValheimStatus/compare/v0.3.1...v1.0.0) (2026-03-06)
 
 
