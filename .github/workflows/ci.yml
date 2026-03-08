@@ -61,7 +61,7 @@ jobs:
         run: |
           bunx serve dist -l 3000 &
           sleep 5
-          bunx playwright screenshot --viewport-size=1280,720 --wait-for-timeout=3000 "http://localhost:3000/#/demo" screenshot.png
+          bunx playwright screenshot --viewport-size=1280,1400 --wait-for-timeout=3000 "http://localhost:3000/#/demo" screenshot.png
           pkill -f "serve" || true
       - uses: actions/upload-artifact@v4
         with:
