@@ -1,0 +1,467 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;700&family=Orbitron:wght@400;500;700;900&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Cinzel:wght@400;600;700&display=swap');
+
+@import "tailwindcss";
+
+:root {
+  /* Medieval theme (current) - NO CHANGES */
+  --color-bg-primary: #0a0f0d;
+  --color-bg-secondary: #141a16;
+  --color-stone: #2d3328;
+  --color-stone-light: #3d4538;
+  --color-amber: #d4a853;
+  --color-amber-dark: #8b6914;
+  --color-parchment: #e8dcc4;
+  --color-blood: #8b0000;
+  --color-blood-dark: #4a0000;
+  --color-forest: #1a2f1a;
+  --color-iron: #4a4a4a;
+
+  /* Synthwave theme variables */
+  --color-synth-bg-primary: #0d0221;
+  --color-synth-bg-secondary: #1a0b2e;
+  --color-synth-dark: #16213e;
+  --color-synth-pink: #ff006e;
+  --color-synth-pink-dark: #bc0051;
+  --color-synth-cyan: #00f5ff;
+  --color-synth-cyan-dark: #00b8c2;
+  --color-synth-purple: #9d4edd;
+  --color-synth-purple-dark: #5a189a;
+  --color-synth-yellow: #f9c74f;
+  --color-synth-text: #f0f0f0;
+
+  /* Hugo Boss theme variables */
+  --color-boss-bg-primary: #0f172a;
+  --color-boss-bg-secondary: #1e293b;
+  --color-boss-slate: #334155;
+  --color-boss-slate-light: #475569;
+  --color-boss-text: #e2e8f0;
+  --color-boss-accent: #94a3b8;
+  --color-boss-success: #10b981;
+  --color-boss-warning: #f59e0b;
+  --color-boss-danger: #ef4444;
+
+  /* Royal theme variables */
+  --color-royal-bg-primary: #1e1b4b;
+  --color-royal-bg-secondary: #312e81;
+  --color-royal-indigo: #4338ca;
+  --color-royal-indigo-dark: #3730a3;
+  --color-royal-gold: #fbbf24;
+  --color-royal-gold-dark: #f59e0b;
+  --color-royal-purple: #8b5cf6;
+  --color-royal-text: #fef3c7;
+
+  /* Caesar theme variables */
+  --color-caesar-bg-primary: #1c1917;
+  --color-caesar-bg-secondary: #292524;
+  --color-caesar-stone: #44403c;
+  --color-caesar-stone-light: #57534e;
+  --color-caesar-orange: #fb923c;
+  --color-caesar-orange-dark: #ea580c;
+  --color-caesar-gold: #fcd34d;
+  --color-caesar-bronze: #b45309;
+  --color-caesar-text: #fed7aa;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Cinzel', serif;
+  background-image: url('/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  color: var(--color-parchment);
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgba(10, 15, 13, 0.85);
+}
+
+/* Medieval Theme (default) */
+[data-theme="medieval"] body {
+  font-family: 'Cinzel', serif;
+  background-image: url('/background.jpg');
+}
+
+[data-theme="medieval"] #root {
+  background-color: rgba(10, 15, 13, 0.85);
+}
+
+/* Synthwave Theme */
+[data-theme="synthwave"] body {
+  font-family: 'Orbitron', sans-serif;
+  background-image: url('/background-synthwave.jpg');
+  color: var(--color-synth-text);
+}
+
+[data-theme="synthwave"] #root {
+  background-color: rgba(13, 2, 33, 0.85);
+  background-image: 
+    linear-gradient(180deg, rgba(255, 0, 110, 0.03) 0%, transparent 50%),
+    linear-gradient(0deg, rgba(0, 245, 255, 0.03) 0%, transparent 50%);
+}
+
+/* Synthwave Neon Glow Effects */
+[data-theme="synthwave"] .text-amber-400 {
+  color: var(--color-synth-cyan) !important;
+  text-shadow: 0 0 10px rgba(0, 245, 255, 0.5), 0 0 20px rgba(0, 245, 255, 0.3);
+}
+
+[data-theme="synthwave"] .text-parchment {
+  color: var(--color-synth-text) !important;
+}
+
+[data-theme="synthwave"] [class*="text-parchment"] {
+  color: rgba(240, 240, 240, 0.8) !important;
+}
+
+[data-theme="synthwave"] .bg-gradient-to-b.from-stone-900\/80 {
+  background: linear-gradient(180deg, rgba(26, 11, 46, 0.9) 0%, rgba(13, 2, 33, 0.95) 100%) !important;
+  border-color: rgba(0, 245, 255, 0.3) !important;
+  box-shadow: 0 0 30px rgba(0, 245, 255, 0.15), inset 0 0 60px rgba(157, 78, 221, 0.1) !important;
+}
+
+[data-theme="synthwave"] [class*="border-stone-700"] {
+  border-color: rgba(0, 245, 255, 0.2) !important;
+}
+
+[data-theme="synthwave"] [class*="bg-stone-800"],
+[data-theme="synthwave"] [class*="bg-stone-900"] {
+  background: rgba(26, 11, 46, 0.6) !important;
+  border-color: rgba(0, 245, 255, 0.15) !important;
+}
+
+[data-theme="synthwave"] .font-\[\'Cinzel_Decorative\'\] {
+  font-family: 'Orbitron', sans-serif !important;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+[data-theme="synthwave"] .font-\[\'Cinzel\'\] {
+  font-family: 'Orbitron', sans-serif !important;
+}
+
+/* Synthwave Grid Overlay */
+[data-theme="synthwave"] #root::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(90deg, rgba(0, 245, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(rgba(0, 245, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Synthwave Accent Colors */
+[data-theme="synthwave"] .text-green-400 {
+  color: #00ff88 !important;
+  text-shadow: 0 0 8px rgba(0, 255, 136, 0.4);
+}
+
+[data-theme="synthwave"] .text-red-400,
+[data-theme="synthwave"] .text-red-500,
+[data-theme="synthwave"] .text-red-600 {
+  color: var(--color-synth-pink) !important;
+  text-shadow: 0 0 8px rgba(255, 0, 110, 0.4);
+}
+
+[data-theme="synthwave"] .bg-red-600,
+[data-theme="synthwave"] [class*="bg-red-900"] {
+  background: linear-gradient(135deg, var(--color-synth-pink-dark) 0%, var(--color-synth-pink) 100%) !important;
+  box-shadow: 0 0 15px rgba(255, 0, 110, 0.4);
+}
+
+[data-theme="synthwave"] .text-yellow-400 {
+  color: var(--color-synth-yellow) !important;
+  text-shadow: 0 0 8px rgba(249, 199, 79, 0.4);
+}
+
+/* Synthwave Scanline Effect */
+[data-theme="synthwave"] body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.1) 2px,
+    rgba(0, 0, 0, 0.1) 4px
+  );
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.15;
+}
+
+/* Hugo Boss Theme */
+[data-theme="hugo-boss"] body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, var(--color-boss-bg-primary) 0%, var(--color-boss-bg-secondary) 100%);
+  color: var(--color-boss-text);
+}
+
+[data-theme="hugo-boss"] #root {
+  background-color: rgba(15, 23, 42, 0.9);
+}
+
+[data-theme="hugo-boss"] .text-amber-400 {
+  color: var(--color-boss-text) !important;
+  font-weight: 300;
+}
+
+[data-theme="hugo-boss"] .text-parchment {
+  color: var(--color-boss-accent) !important;
+}
+
+[data-theme="hugo-boss"] [class*="text-parchment"] {
+  color: rgba(226, 232, 240, 0.7) !important;
+}
+
+[data-theme="hugo-boss"] .bg-gradient-to-b.from-stone-900\/80 {
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.98) 100%) !important;
+  border-color: rgba(148, 163, 184, 0.3) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.15) !important;
+}
+
+[data-theme="hugo-boss"] [class*="border-stone-700"] {
+  border-color: rgba(148, 163, 184, 0.2) !important;
+}
+
+[data-theme="hugo-boss"] [class*="bg-stone-800"],
+[data-theme="hugo-boss"] [class*="bg-stone-900"] {
+  background: rgba(30, 41, 59, 0.6) !important;
+  border-color: rgba(148, 163, 184, 0.15) !important;
+}
+
+[data-theme="hugo-boss"] .font-\[\'Cinzel_Decorative\'\] {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+[data-theme="hugo-boss"] .font-\[\'Cinzel\'\] {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 400;
+}
+
+[data-theme="hugo-boss"] .text-green-400 {
+  color: var(--color-boss-success) !important;
+}
+
+[data-theme="hugo-boss"] .text-red-400,
+[data-theme="hugo-boss"] .text-red-500,
+[data-theme="hugo-boss"] .text-red-600 {
+  color: var(--color-boss-danger) !important;
+}
+
+[data-theme="hugo-boss"] .text-yellow-400 {
+  color: var(--color-boss-warning) !important;
+}
+
+/* Royal Theme */
+[data-theme="royal"] body {
+  font-family: 'Playfair Display', serif;
+  background: linear-gradient(180deg, var(--color-royal-bg-primary) 0%, var(--color-royal-bg-secondary) 50%, var(--color-royal-indigo) 100%);
+  color: var(--color-royal-text);
+}
+
+[data-theme="royal"] #root {
+  background-color: rgba(30, 27, 75, 0.85);
+  background-image: 
+    radial-gradient(ellipse at top, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom, rgba(251, 191, 36, 0.1) 0%, transparent 50%);
+}
+
+[data-theme="royal"] .text-amber-400 {
+  color: var(--color-royal-gold) !important;
+  text-shadow: 0 0 15px rgba(251, 191, 36, 0.5);
+}
+
+[data-theme="royal"] .text-parchment {
+  color: var(--color-royal-text) !important;
+}
+
+[data-theme="royal"] [class*="text-parchment"] {
+  color: rgba(254, 243, 199, 0.85) !important;
+}
+
+[data-theme="royal"] .bg-gradient-to-b.from-stone-900\/80 {
+  background: linear-gradient(180deg, rgba(67, 56, 202, 0.9) 0%, rgba(30, 27, 75, 0.95) 100%) !important;
+  border-color: rgba(251, 191, 36, 0.4) !important;
+  box-shadow: 
+    0 0 30px rgba(139, 92, 246, 0.2),
+    inset 0 0 60px rgba(251, 191, 36, 0.05),
+    0 0 0 1px rgba(251, 191, 36, 0.2) !important;
+}
+
+[data-theme="royal"] [class*="border-stone-700"] {
+  border-color: rgba(251, 191, 36, 0.25) !important;
+}
+
+[data-theme="royal"] [class*="bg-stone-800"],
+[data-theme="royal"] [class*="bg-stone-900"] {
+  background: rgba(67, 56, 202, 0.5) !important;
+  border-color: rgba(251, 191, 36, 0.2) !important;
+}
+
+[data-theme="royal"] .font-\[\'Cinzel_Decorative\'\] {
+  font-family: 'Cinzel', serif !important;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+[data-theme="royal"] .font-\[\'Cinzel\'\] {
+  font-family: 'Playfair Display', serif !important;
+}
+
+[data-theme="royal"] .text-green-400 {
+  color: #34d399 !important;
+  text-shadow: 0 0 8px rgba(52, 211, 153, 0.4);
+}
+
+[data-theme="royal"] .text-red-400,
+[data-theme="royal"] .text-red-500,
+[data-theme="royal"] .text-red-600 {
+  color: #f87171 !important;
+  text-shadow: 0 0 8px rgba(248, 113, 113, 0.4);
+}
+
+[data-theme="royal"] .text-yellow-400 {
+  color: var(--color-royal-gold) !important;
+  text-shadow: 0 0 8px rgba(251, 191, 36, 0.5);
+}
+
+[data-theme="royal"] .bg-red-600,
+[data-theme="royal"] [class*="bg-red-900"] {
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.8) 0%, rgba(153, 27, 27, 0.9) 100%) !important;
+  box-shadow: 0 0 20px rgba(220, 38, 38, 0.4);
+}
+
+/* Royal crown accent */
+[data-theme="royal"] #root::before {
+  content: '👑';
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Caesar Theme */
+[data-theme="caesar"] body {
+  font-family: 'Cinzel', serif;
+  background: linear-gradient(180deg, var(--color-caesar-bg-primary) 0%, #451a03 50%, var(--color-caesar-bg-secondary) 100%);
+  color: var(--color-caesar-text);
+}
+
+[data-theme="caesar"] #root {
+  background-color: rgba(28, 25, 23, 0.9);
+  background-image: 
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23fb923c' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+[data-theme="caesar"] .text-amber-400 {
+  color: var(--color-caesar-orange) !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="caesar"] .text-parchment {
+  color: var(--color-caesar-gold) !important;
+}
+
+[data-theme="caesar"] [class*="text-parchment"] {
+  color: rgba(254, 215, 170, 0.8) !important;
+}
+
+[data-theme="caesar"] .bg-gradient-to-b.from-stone-900\/80 {
+  background: linear-gradient(180deg, rgba(68, 64, 60, 0.9) 0%, rgba(28, 25, 23, 0.95) 100%) !important;
+  border-color: rgba(251, 146, 60, 0.4) !important;
+  box-shadow: 
+    inset 0 0 30px rgba(0, 0, 0, 0.5),
+    0 0 0 2px rgba(251, 146, 60, 0.2),
+    0 10px 40px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="caesar"] [class*="border-stone-700"] {
+  border-color: rgba(251, 146, 60, 0.25) !important;
+}
+
+[data-theme="caesar"] [class*="bg-stone-800"],
+[data-theme="caesar"] [class*="bg-stone-900"] {
+  background: rgba(68, 64, 60, 0.6) !important;
+  border-color: rgba(251, 146, 60, 0.15) !important;
+}
+
+[data-theme="caesar"] .font-\[\'Cinzel_Decorative\'\] {
+  font-family: 'Cinzel', serif !important;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+[data-theme="caesar"] .font-\[\'Cinzel\'\] {
+  font-family: 'Cinzel', serif !important;
+}
+
+[data-theme="caesar"] .text-green-400 {
+  color: #22c55e !important;
+}
+
+[data-theme="caesar"] .text-red-400,
+[data-theme="caesar"] .text-red-500,
+[data-theme="caesar"] .text-red-600 {
+  color: #dc2626 !important;
+}
+
+[data-theme="caesar"] .text-yellow-400 {
+  color: var(--color-caesar-gold) !important;
+}
+
+[data-theme="caesar"] .bg-red-600,
+[data-theme="caesar"] [class*="bg-red-900"] {
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.9) 0%, rgba(153, 27, 27, 0.95) 100%) !important;
+  border: 1px solid rgba(180, 83, 9, 0.5) !important;
+}
+
+/* Caesar column decoration */
+[data-theme="caesar"] #root::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  background: linear-gradient(90deg, rgba(251, 146, 60, 0.1) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+[data-theme="caesar"] #root::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 60px;
+  background: linear-gradient(270deg, rgba(251, 146, 60, 0.1) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
