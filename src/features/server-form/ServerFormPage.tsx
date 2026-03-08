@@ -103,7 +103,16 @@ export function ServerFormPage() {
           </form.Subscribe>
 
           {/* Footer hint */}
-          <p className="text-xs text-parchment/40 text-center pt-2">{m.form_footer_text()}</p>
+          <p className="text-xs text-parchment/40 text-center pt-2">
+            {m.form_footer_text()}
+            {" "}•{" "}
+            <a
+              href="/#/demo"
+              className="text-amber-500/70 hover:text-amber-400 transition-colors"
+            >
+              Try Demo
+            </a>
+          </p>
 
           {/* Theme Switcher */}
           <ThemeSwitcher />

@@ -1,13 +1,12 @@
-import { useNavigate, useParams } from "@tanstack/react-router";
+import { useNavigate } from "@tanstack/react-router";
 import { useServerStatus } from "#/features/server-status/hooks/useServerStatus";
+import { useConfig } from "#/features/server-status/ConfigContext";
 import { m } from "#/i18n/messages";
 
 export function ServerName() {
   const { data } = useServerStatus();
   const navigate = useNavigate();
-  const { apiDomain, serverDomain } = useParams({
-    from: "/_localized/$apiDomain/{-$serverDomain}",
-  });
+  const { apiDomain, serverDomain } = useConfig();
 
   if (!data) return null;
 

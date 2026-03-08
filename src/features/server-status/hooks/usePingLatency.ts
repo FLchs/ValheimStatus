@@ -11,6 +11,13 @@ const measurePing = async (domain: string, signal: AbortSignal): Promise<PingRes
   const startTime = performance.now();
 
   try {
+    if (domain === "__demo__") {
+      await fetch("/", { signal, method: "HEAD" });
+      const endTime = performance.now();
+      const latency = Math.round(endTime - startTime);
+      return { latency };
+    }
+
     const url = buildStatusUrl(domain);
     const response = await fetch(url, { signal, method: "HEAD" });
 
