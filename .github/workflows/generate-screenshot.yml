@@ -1,0 +1,49 @@
+name: Generate Screenshot
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  screenshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+      - name: Create .env file
+        run: |
+          echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" >> .env
+          echo "VITE_SERVER_ADDRESS=${{ secrets.VITE_SERVER_ADDRESS }}" >> .env
+          echo "VITE_APP_VERSION=${{ github.ref_name || 'dev' }}" >> .env
+      - run: bun install
+      - run: bun run build
+      - name: Install Playwright
+        run: bunx playwright install chromium
+      - name: Generate Screenshot
+        run: |
+          bun run preview &
+          sleep 3
+          bunx tsx scripts/take-screenshot.ts
+          pkill -f "vite" || true
+      - name: Update Screenshot Branch
+        run: |
+          git config user.name "Screenshot bot"
+          git config user.email "bot@screenshot.local"
+          # Create or checkout screenshot branch
+          git fetch origin screenshot || true
+          git checkout -B screenshot
+          # Clean the branch and add only the screenshot
+          git rm -rf . || true
+          mkdir -p docs
+          mv screenshot.png docs/screenshot.png
+          git add docs/screenshot.png
+          git commit -m "docs: update screenshot" || echo "No changes to commit"
+          git push -f origin screenshot
