@@ -2,10 +2,8 @@ name: Generate Screenshot
 
 on:
   push:
-    branches: ['feat/separate-screenshot-action']
+    branches: [master]
   workflow_dispatch:
-  schedule:
-    - cron: '0 0 * * 0'  # Weekly on Sunday at midnight
 
 permissions:
   contents: write
@@ -35,11 +33,17 @@ jobs:
           sleep 3
           bunx tsx scripts/take-screenshot.ts
           pkill -f "vite" || true
-      - name: Update README Screenshot
+      - name: Update Screenshot Branch
         run: |
           git config user.name "Screenshot bot"
           git config user.email "bot@screenshot.local"
+          # Create or checkout screenshot branch
+          git fetch origin screenshot || true
+          git checkout -B screenshot
+          # Clean the branch and add only the screenshot
+          git rm -rf . || true
+          mkdir -p docs
           mv screenshot.png docs/screenshot.png
           git add docs/screenshot.png
           git commit -m "docs: update screenshot" || echo "No changes to commit"
-          git push
+          git push -f origin screenshot
