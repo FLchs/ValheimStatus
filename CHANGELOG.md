@@ -1,3 +1,12 @@
+## [1.2.2](https://github.com/FLchs/ValheimStatus/compare/v1.2.1...v1.2.2) (2026-03-09)
+
+
+### Bug Fixes
+
+* bad rebase ([e017e70](https://github.com/FLchs/ValheimStatus/commit/e017e70aed70373bb52b1ce57387de5e12dfd9c0))
+
+
+
 ## [1.2.1](https://github.com/FLchs/ValheimStatus/compare/v1.2.0...v1.2.1) (2026-03-09)
 
 
