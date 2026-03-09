@@ -1,3 +1,12 @@
+## [1.2.3](https://github.com/FLchs/ValheimStatus/compare/v1.2.2...v1.2.3) (2026-03-09)
+
+
+### Bug Fixes
+
+* demo page ([657d161](https://github.com/FLchs/ValheimStatus/commit/657d1616ba4e6cc020bbc16c2c458a1d37782e0b))
+
+
+
 ## [1.2.2](https://github.com/FLchs/ValheimStatus/compare/v1.2.1...v1.2.2) (2026-03-09)
 
 
