@@ -1,3 +1,13 @@
+## [1.2.4](https://github.com/FLchs/ValheimStatus/compare/v1.2.3...v1.2.4) (2026-03-09)
+
+
+### Bug Fixes
+
+* screenshot ([db8f6f6](https://github.com/FLchs/ValheimStatus/commit/db8f6f69ba9bc5b935f126482a3f7938c6144ba7))
+* use bun for preview ([d0df5da](https://github.com/FLchs/ValheimStatus/commit/d0df5dad951a7ce1a7470dbefa60f8e2edd274d7))
+
+
+
 ## [1.2.3](https://github.com/FLchs/ValheimStatus/compare/v1.2.2...v1.2.3) (2026-03-09)
 
 
