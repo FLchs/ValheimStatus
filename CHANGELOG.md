@@ -1,3 +1,12 @@
+## [1.2.1](https://github.com/FLchs/ValheimStatus/compare/v1.2.0...v1.2.1) (2026-03-09)
+
+
+### Bug Fixes
+
+* demo screenshot ([#10](https://github.com/FLchs/ValheimStatus/issues/10)) ([837ba72](https://github.com/FLchs/ValheimStatus/commit/837ba7211e405eba31108eb891c3f78f6ec341da))
+
+
+
 # [1.2.0](https://github.com/FLchs/ValheimStatus/compare/v1.1.2...v1.2.0) (2026-03-08)
 
 
