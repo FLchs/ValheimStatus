@@ -30,9 +30,9 @@ Simply enter your server's API endpoint to get started. The page will automatica
 - Live network latency monitoring
 - Step-by-step instructions for players to join
 
-## Demo
+## Try it Out
 
-Check out the live demo: [https://vhstatus.ovh](https://vhstatus.ovh)
+Use the live app at: [https://vhstatus.ovh](https://vhstatus.ovh)
 
 ## License
 
