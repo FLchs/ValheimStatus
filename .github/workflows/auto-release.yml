@@ -83,7 +83,8 @@ jobs:
           retention-days: 90
 
   screenshot:
-    needs: build
+    needs: [build, release]
+    if: ${{ needs.release.outputs.skipped == 'false' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
