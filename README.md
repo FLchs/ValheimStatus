@@ -1,8 +1,10 @@
 # Valheim Server Status
 
-[![CI](https://github.com/FLchs/ValheimStatus/actions/workflows/ci.yml/badge.svg)](https://github.com/FLchs/ValheimStatus/actions/workflows/ci.yml)
-[![Build & Release](https://github.com/FLchs/ValheimStatus/actions/workflows/build.yml/badge.svg)](https://github.com/FLchs/ValheimStatus/actions/workflows/build.yml)
-[![Live Site](https://img.shields.io/badge/Live%20Site-vhstatus.ovh-brightgreen)](https://vhstatus.ovh)
+<div align="center">
+
+[![CI](https://img.shields.io/github/actions/workflow/status/FLchs/ValheimStatus/ci.yml?style=flat-square&label=CI&labelColor=3d4538&color=22c55e)](https://github.com/FLchs/ValheimStatus/actions/workflows/ci.yml)&nbsp;&nbsp;&nbsp;[![Version](https://img.shields.io/badge/version-v1.2.4-d4a853?style=flat-square&labelColor=3d4538)](https://github.com/FLchs/ValheimStatus/releases)&nbsp;&nbsp;&nbsp;[![Live Site](https://img.shields.io/badge/site-vhstatus.ovh-d4a853?style=flat-square&label=live&labelColor=3d4538)](https://vhstatus.ovh)
+
+</div>
 
 A beautiful, real-time status page for your Valheim game server. Keep your community informed about server availability, player count, and connection quality.
 
