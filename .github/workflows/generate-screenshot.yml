@@ -1,0 +1,43 @@
+name: Generate Screenshot
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 0'  # Weekly on Sunday at midnight
+
+permissions:
+  contents: write
+
+jobs:
+  screenshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+      - name: Create .env file
+        run: |
+          echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" >> .env
+          echo "VITE_SERVER_ADDRESS=${{ secrets.VITE_SERVER_ADDRESS }}" >> .env
+          echo "VITE_APP_VERSION=${{ github.ref_name || 'dev' }}" >> .env
+      - run: bun install
+      - run: bun run build
+      - name: Install Playwright
+        run: bunx playwright install chromium
+      - name: Generate Screenshot
+        run: |
+          bunx run preview &
+          sleep 30
+          bunx playwright screenshot --viewport-size=800,1400 --wait-for-timeout=3000 "http://localhost:4173/#/demo" screenshot.png
+          pkill -f "serve" || true
+      - name: Update README Screenshot
+        run: |
+          git config user.name "Screenshot bot"
+          git config user.email "bot@screenshot.local"
+          mv screenshot.png docs/screenshot.png
+          git add docs/screenshot.png
+          git commit -m "docs: update screenshot" || echo "No changes to commit"
+          git push

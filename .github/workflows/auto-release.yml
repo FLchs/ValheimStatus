@@ -82,37 +82,8 @@ jobs:
           path: dist/
           retention-days: 90
 
-  screenshot:
-    needs: [build, release]
-    if: ${{ needs.release.outputs.skipped == 'false' }}
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: latest
-      - run: bun install
-      - name: Install Playwright
-        run: bunx playwright install chromium
-      - name: Generate Screenshot
-        run: |
-          bunx run preview &
-          sleep 30
-          bunx playwright screenshot --viewport-size=800,1400 --wait-for-timeout=3000 "http://localhost:4173/#/demo" screenshot.png
-          pkill -f "serve" || true
-      - name: Update README Screenshot
-        run: |
-          git config user.name "Release bot"
-          git config user.email "bot@release.local"
-          mv screenshot.png docs/screenshot.png
-          git add docs/screenshot.png
-          git commit -m "docs: update screenshot for release ${{ needs.release.outputs.tag }}"
-          git push
-
   deploy:
-    needs: [build, screenshot]
+    needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
