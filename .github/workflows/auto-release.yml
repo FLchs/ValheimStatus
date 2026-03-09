@@ -88,6 +88,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/download-artifact@v4
         with:
           name: dist
@@ -117,8 +120,8 @@ jobs:
           git config user.email "bot@release.local"
           mv screenshot.png docs/screenshot.png
           git add docs/screenshot.png
-          git commit -m "docs: update screenshot for release ${{ needs.release.outputs.tag }}" || true
-          git push
+          git commit -m "docs: update screenshot for release ${{ needs.release.outputs.tag }}" || exit 0
+          git push || exit 0
 
   deploy:
     needs: [build, screenshot]
