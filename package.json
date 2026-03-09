@@ -11,7 +11,7 @@
     "lint": "oxlint .",
     "format": "oxfmt .",
     "format:check": "oxfmt . --check",
-    "preview": "vite preview"
+    "preview": "bunx vite preview"
   },
   "dependencies": {
     "@aziham/chartjs-plugin-streaming": "^3.5.1",
