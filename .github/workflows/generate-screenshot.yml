@@ -31,10 +31,10 @@ jobs:
         run: bunx playwright install chromium
       - name: Generate Screenshot
         run: |
-          bunx run preview &
+          bun run preview &
           sleep 30
           bunx playwright screenshot --viewport-size=800,1400 --wait-for-timeout=3000 "http://localhost:4173/#/demo" screenshot.png
-          pkill -f "serve" || true
+          pkill -f "vite" || true
       - name: Update README Screenshot
         run: |
           git config user.name "Screenshot bot"
