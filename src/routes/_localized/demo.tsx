@@ -7,7 +7,6 @@ function DemoComponent() {
   useLocale(); // Subscribe to locale changes
   return (
     <ConfigProvider apiDomain="__demo__" serverDomain="demo.valheim.example.com">
-      <ServerCard />
       <div className="max-w-2xl mx-auto px-4 py-8">
         <ServerCard />
       </div>

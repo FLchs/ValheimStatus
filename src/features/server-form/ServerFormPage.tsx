@@ -103,14 +103,10 @@ export function ServerFormPage() {
           </form.Subscribe>
 
           {/* Footer hint */}
-          <p className="text-xs text-parchment/40 text-center pt-2">
-            {m.form_footer_text()}
-            {" "}•{" "}
-            <a
-              href="/#/demo"
-              className="text-amber-500/70 hover:text-amber-400 transition-colors"
-            >
-              Try Demo
+          <p className="text-xs text-parchment/40 text-center flex flex-col gap-4">
+            <span>{m.form_footer_text()}</span>
+            <a href="/#/demo" className="text-amber-500/70 hover:text-amber-400 transition-colors">
+              Demo
             </a>
           </p>
 
