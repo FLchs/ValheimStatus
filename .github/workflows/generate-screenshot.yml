@@ -33,7 +33,7 @@ jobs:
         run: |
           bun run preview &
           sleep 3
-          bunx playwright screenshot --viewport-size=1024,900 --wait-for-timeout=30000 --element="#server-card-content" "http://localhost:4173/#/demo" screenshot.png
+          bunx tsx scripts/take-screenshot.ts
           pkill -f "vite" || true
       - name: Update README Screenshot
         run: |
