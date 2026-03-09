@@ -2,8 +2,7 @@ import { useForm } from "@tanstack/react-form";
 import { useNavigate } from "@tanstack/react-router";
 import { TextField } from "./components/TextField";
 import { SubmitButton } from "./components/SubmitButton";
-import { LanguageSwitcher } from "#/components/LanguageSwitcher";
-import { ThemeSwitcher } from "#/components/ThemeSwitcher";
+import { AppFooter } from "#/components/AppFooter";
 import { testApi } from "./api";
 import { m } from "#/i18n/messages";
 import { Route } from "#/routes/_localized/index";
@@ -102,19 +101,19 @@ export function ServerFormPage() {
             )}
           </form.Subscribe>
 
-          {/* Footer hint */}
-          <p className="text-xs text-parchment/40 text-center flex flex-col gap-4">
-            <span>{m.form_footer_text()}</span>
-            <a href="/#/demo" className="text-amber-500/70 hover:text-amber-400 transition-colors">
-              Demo
-            </a>
-          </p>
-
-          {/* Theme Switcher */}
-          <ThemeSwitcher />
-
-          {/* Language Switcher */}
-          <LanguageSwitcher />
+          {/* Footer */}
+          <AppFooter
+            showHelpText
+            showGithubLink={false}
+            helpText={
+              <>
+                <span>{m.form_footer_text()}</span>
+                <a href="/#/demo" className="text-amber-500/70 hover:text-amber-400 transition-colors">
+                  Demo
+                </a>
+              </>
+            }
+          />
         </form>
       </div>
     </div>

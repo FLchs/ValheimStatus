@@ -5,7 +5,7 @@ import { LoadingView } from "#/features/server-status/components/LoadingView";
 import { PingGraph } from "#/features/server-status/components/PingGraph";
 import { ServerAddress } from "#/features/server-status/components/ServerAddress";
 import { ServerDetailsGrid } from "#/features/server-status/components/ServerDetailsGrid";
-import { ServerFooter } from "#/features/server-status/components/ServerFooter";
+import { AppFooter } from "#/components/AppFooter";
 import { ServerHeader } from "#/features/server-status/components/ServerHeader";
 import { ServerName } from "#/features/server-status/components/ServerName";
 import { ServerStatusGrid } from "#/features/server-status/components/ServerStatusGrid";
@@ -37,7 +37,7 @@ export function ServerCard() {
         <ServerAddress />
         <PingGraph />
         <JoinInstructions />
-        <ServerFooter />
+        <AppFooter />
       </div>
     </div>
   );
